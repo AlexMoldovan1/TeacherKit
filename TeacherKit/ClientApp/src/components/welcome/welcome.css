@@ -1,0 +1,25 @@
+.backColor {
+  background-color: #d81b60 !important;
+  height: 50px !important;
+  width: 100% !important;
+}
+.positioning {
+  float: right;
+  width: 15%;
+  margin-right: 20px;
+}
+
+.hoverMenu > *:hover {
+  background-color: #d81b60 !important;
+}
+
+.bp3-popover-target {
+  width: 100% !important;
+}
+
+.WelcomeTop {
+  font-size: 40px;
+  position: relative;
+  width: 40% !important;
+  text-align: center;
+}

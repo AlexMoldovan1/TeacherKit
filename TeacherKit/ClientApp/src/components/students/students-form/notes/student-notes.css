@@ -1,0 +1,21 @@
+.student-notes {
+  justify-content: space-between;
+}
+
+.student-note {
+  width: 650px;
+  border-radius: 3px;
+  border: 2px solid black;
+}
+
+.added-note {
+  margin-left: 66px;
+  margin-right: auto;
+}
+
+.note-button {
+  margin-top: auto;
+  margin-bottom: auto;
+  right: 0;
+  cursor: pointer;
+}

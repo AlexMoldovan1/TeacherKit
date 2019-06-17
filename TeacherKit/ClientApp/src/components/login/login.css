@@ -1,0 +1,45 @@
+.formUsername {
+  display: block;
+  width: 20%;
+  margin-top: 20px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.password input,
+.username input {
+  height: 75px;
+}
+
+.username input {
+  height: 75px;
+}
+
+.font-size {
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+.position-icon {
+  position: relative !important;
+  margin: 10px 10px 0px 0px !important;
+}
+
+.position-icon-pass {
+  position: relative !important;
+  margin: 10px 10px 0px 0px !important;
+}
+
+.button-all {
+  background-color: #d81b60 !important;
+  width: 16% !important;
+  padding-block-end: 5px;
+  margin-top: 15px;
+  height: 75px;
+}
+.textDecoration {
+  text-decoration: none;
+}
+.textdecoration:hover {
+  text-decoration: none;
+}

@@ -1,0 +1,74 @@
+.user-placeholder {
+  zoom: 15;
+  color: #d81b60 !important;
+  display: inline-block !important;
+  width: fit-content !important;
+}
+
+.user-details {
+  display: inline-block;
+  text-align: left;
+  font-size: 20px;
+  width: 800px;
+  line-height: 40px;
+}
+
+.user-details > * {
+  margin: 5px;
+}
+
+.account-details-tab > * {
+  margin: 2px 5px;
+}
+
+.account-details-tab {
+  padding: 5px;
+}
+
+.account-details-tab .edit-icon {
+  width: 70px;
+  height: 70px;
+  fill: black;
+  margin: 50px 50px;
+}
+
+.account-details-tabs .bp3-tab-list > * {
+  width: 100% !important;
+}
+
+.user-details a {
+  text-decoration: underline;
+}
+
+.user-details input {
+  width: 70%;
+  padding-left: 10px;
+}
+
+.user-details label {
+  width: 25%;
+}
+
+.account-details-tab h1 {
+  font-size: 45px;
+  margin: 30px 0;
+}
+
+div.submit-button button.cancel {
+  background-color: lightgray;
+}
+
+div.submit-button button.submit {
+  background-color: #d81b60;
+}
+
+.user-details div.err-view {
+  display: flex;
+  align-items: center;
+  height: 20px !important;
+  margin-left: 27%;
+}
+
+.user-details div.err-view > * {
+  margin-left: 5px;
+}

@@ -1,0 +1,28 @@
+.search-field,
+.search-btn {
+  padding: 15px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.search-field {
+  width: 85%;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.search-btn {
+  font-weight: bold;
+  background-color: white;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+.search-btn:hover {
+  background-color: #d5d5d5;
+}
+
+.search-input {
+  display: inline-block;
+  width: 250px;
+}

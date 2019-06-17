@@ -1,0 +1,58 @@
+.register-button {
+  width: 30% !important;
+  height: 60px !important;
+  background-color: #d81b60 !important;
+  color: white !important;
+  font-size: 25px !important;
+  font-weight: bold !important;
+}
+
+.cancel-button {
+  width: 30% !important;
+  height: 60px !important;
+  background-color: gray !important;
+  color: white !important;
+  font-size: 25px !important;
+  font-weight: bold !important;
+}
+
+.spacing-button {
+  margin-top: 100px;
+}
+
+.dimension {
+  width: 30% !important;
+  height: 50px !important;
+}
+
+.valid {
+  border: 2px solid lightblue;
+}
+
+.invalid {
+  border: 3px solid #d22d27;
+}
+.myFont {
+  font-size: 25px;
+  position: relative;
+  width: 30% !important;
+  text-align: right;
+}
+
+.error-register {
+  color: #d22d27;
+  font-weight: bold;
+  float: left;
+}
+
+.spaceRows {
+  margin-bottom: -60px !important;
+  /* margin-left: 30% !important; */
+}
+
+.inputColumn {
+  padding: 30px;
+  margin: 10px 15px;
+  flex: 1 1;
+  width: 30% !important;
+}

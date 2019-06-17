@@ -1,0 +1,57 @@
+.custom-file-upload {
+  display: inline-block;
+  padding: 0px 0px;
+  cursor: pointer;
+}
+
+.imageUpload {
+  width: 190px;
+  height: 130px;
+  padding: 15px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+ul.a {
+  padding-left: 22px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.a .divForMedia {
+  margin: 7px 4px 7px 4px;
+  background-color: #eeeeee;
+  position: relative;
+  float: left;
+}
+
+.a .liForMedia {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin: 14px;
+  float: left;
+  width: 210px;
+  align-self: center;
+}
+
+.inputDelete {
+  bottom: 2px;
+  left: 158px;
+  position: absolute;
+  background: transparent;
+  border: transparent;
+}
+
+div.divForMedia input {
+  position: absolute;
+  display: block;
+}
+
+.deleteImage {
+  width: 22px;
+  height: 27px;
+}

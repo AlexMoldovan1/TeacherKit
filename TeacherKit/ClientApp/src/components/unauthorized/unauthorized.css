@@ -1,0 +1,19 @@
+.log-in-button {
+  /* background-color: #46b8da !important; */
+  background-color: #d81b60 !important;
+  width: 400px !important;
+  margin-bottom: auto;
+  color: white !important;
+  font-size: 30px !important;
+  font-weight: bold !important;
+  margin-top: 30px;
+}
+
+.notLoggedFont {
+  color: #d81b60;
+  margin: auto;
+  font-size: 75px;
+  font-family: "Sofia";
+  margin-top: 35px;
+  width: 45%;
+}

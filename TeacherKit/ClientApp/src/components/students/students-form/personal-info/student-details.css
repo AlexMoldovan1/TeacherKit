@@ -1,0 +1,55 @@
+.student-details {
+  justify-content: space-between;
+}
+
+.student {
+  width: 650px;
+}
+
+.student-adress {
+  padding: 10px;
+  width: 650px;
+}
+
+.student-code {
+  margin-right: 450px;
+}
+
+.errorMessage {
+  color: red;
+}
+
+.styles_overlay__CLSq- {
+  background: rgba(241, 241, 241, 0.75);
+}
+
+.bp3-button.bp3-intent-primary {
+  margin-right: 54px;
+  margin-left: 15px;
+  width: 143px;
+}
+
+.cancelButton {
+  background: #e0e0e0 !important;
+  color: black !important;
+}
+
+.valid {
+  border: 2px solid black;
+}
+
+.invalid {
+  border: 2px solid #d22d27 !important;
+}
+
+.formGender {
+  margin-right: 580px;
+}
+
+.group {
+  margin: 1px;
+}
+
+.radio-button {
+  width: 50px;
+}

@@ -1,0 +1,22 @@
+.arrow-right-calendars {
+  margin-top: 10%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.arrow-right {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.start-date-picker {
+  margin-left: 8%;
+}
+
+.class-details {
+  justify-content: space-between;
+}
+
+.course-date-label {
+  width: 15% !important;
+}

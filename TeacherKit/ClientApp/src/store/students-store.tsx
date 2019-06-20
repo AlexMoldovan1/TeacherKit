@@ -80,7 +80,7 @@ export class StudentsStore {
   }
 
   @action.bound
-  public AddOrUpdateStudent(
+  public AddStudent(
     student: StudentViewModel,
     mediaList: any,
     callback?: Function
@@ -92,7 +92,19 @@ export class StudentsStore {
     var inputData = { ...student, studentsMedia: null };
     form.append("inputData", JSON.stringify(inputData));
     this.studentApi
-      .addOrUpdateStudent(form)
+      .addStudent(form)
+      .then(statusCode => (this.statusCode = statusCode))
+      .then(() => {
+        if (callback !== undefined) {
+          callback();
+        }
+      });
+  }
+
+  @action.bound
+  public UpdateStudent(student: StudentViewModel, callback?: Function) {
+    this.studentApi
+      .updateStudent(student)
       .then(statusCode => (this.statusCode = statusCode))
       .then(() => {
         if (callback !== undefined) {

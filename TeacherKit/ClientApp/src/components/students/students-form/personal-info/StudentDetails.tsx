@@ -27,7 +27,7 @@ interface State {
 const initialState = {
   code: 0,
   age: 0,
-  valueGender: "female"
+  valueGender: "male"
 };
 
 export class StudentDetails extends React.Component<Props, State> {
@@ -39,35 +39,30 @@ export class StudentDetails extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    this.functie();
+    // this.functie();
     // if (this.props.student.id && prevProps.student !== this.props.student) {
     //   this.changeValuesForEditedStudent();
     // }
   }
 
   componentWillpdate() {
-    this.functie();
+    // this.functie();
   }
 
-  private functie(): void {
-    if (this.props.savePressed && this.nameRef.value === "") {
-      this.nameRef.classList.replace("valid", "invalid");
-    } else {
-      this.nameRef.classList.replace("invalid", "valid");
-    }
-  }
+  // private functie(): void {
+  //   if (this.props.savePressed && this.nameRef.value === "") {
+  //     this.nameRef.classList.replace("valid", "invalid");
+  //   } else {
+  //     this.nameRef.classList.replace("invalid", "valid");
+  //   }
+  // }
 
   // private changeValuesForEditedStudent() {
   //   this.setState({
   //     ...this.state,
-  //     servingsInput: this.props.recipe.servings,
-  //     prepTimeHour: this.getNumberOfHours(this.props.recipe.prepTime),
-  //     prepTimeMinutes: this.getNumberOfMinutes(this.props.recipe.prepTime),
-  //     cookTimeHour: this.getNumberOfHours(this.props.recipe.cookTime),
-  //     cookTimeMinutes: this.getNumberOfMinutes(this.props.recipe.cookTime),
-  //     sliderValue: this.getDifficultyValue(this.props.recipe.difficulty),
-  //     rating: this.getRating(this.props.recipe.rating),
-  //     listcheckboxes: this.getCategory(this.props.recipe.category)
+  //     code: this.props.student.code,
+  //     valueGender: this.props.student.gender,
+  //     age: this.props.student.age
   //   });
   // }
 
@@ -112,7 +107,7 @@ export class StudentDetails extends React.Component<Props, State> {
         <div className="bp3-form-group bp3-inline student-details">
           <label className="bp3-label">FirstName*</label>
           <input
-            className="bp3-input student valid"
+            className="bp3-input student-width-inputs valid"
             value={this.props.student.firstName}
             type="text"
             name="title"
@@ -125,7 +120,7 @@ export class StudentDetails extends React.Component<Props, State> {
         <div className="bp3-form-group bp3-inline student-details">
           <label className="bp3-label">LastName*</label>
           <input
-            className="bp3-input student valid"
+            className="bp3-input student-width-inputs valid"
             value={this.props.student.lastName}
             type="text"
             name="title"
@@ -154,7 +149,7 @@ export class StudentDetails extends React.Component<Props, State> {
         <div className="bp3-form-group bp3-inline student-details">
           <label className="bp3-label">Phone</label>
           <input
-            className="bp3-input student valid"
+            className="bp3-input student-width-inputs valid"
             value={this.props.student.phone}
             type="text"
             name="title"
@@ -167,7 +162,7 @@ export class StudentDetails extends React.Component<Props, State> {
         <div className="bp3-form-group bp3-inline student-details">
           <label className="bp3-label">E-mail</label>
           <input
-            className="bp3-input student valid"
+            className="bp3-input student-width-inputs valid"
             value={this.props.student.email}
             type="text"
             name="title"

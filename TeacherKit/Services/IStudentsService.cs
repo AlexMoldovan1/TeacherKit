@@ -10,7 +10,9 @@ namespace TeacherKit.Services
     {
         List<StudentQueryViewModel> GetAll();
         StudentQueryViewModel GetById(int id);
-        void AddOrUpdateStudent(StudentCommandViewModel student);
+        void AddStudent(StudentCommandViewModel student);
+        void UpdateStudent(StudentViewModel student);
+
         void DeleteStudent(int studentId);
     }
 }

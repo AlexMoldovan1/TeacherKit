@@ -6867,11 +6867,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Personal\\Licenta\\TeacherKit.Domain\\TeacherKit.Domain.csproj",
+      "projectUniqueName": "D:\\Personal\\Licenta\\Licenta-TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj",
       "projectName": "TeacherKit.Domain",
-      "projectPath": "D:\\Personal\\Licenta\\TeacherKit.Domain\\TeacherKit.Domain.csproj",
+      "projectPath": "D:\\Personal\\Licenta\\Licenta-TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj",
       "packagesPath": "C:\\Users\\alexandrumoldovan\\.nuget\\packages\\",
-      "outputPath": "D:\\Personal\\Licenta\\TeacherKit.Domain\\obj\\",
+      "outputPath": "D:\\Personal\\Licenta\\Licenta-TeacherKit\\TeacherKit.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -28,12 +28,19 @@ namespace TeacherKit.Controllers
             return _studentsService.GetById(id);
         }
 
-        [Route("AddOrUpdateStudent")]
-        public ActionResult AddOrUpdateStudent(StudentCommandViewModel student)
+        [Route("AddStudent")]
+        public ActionResult AddStudent(StudentCommandViewModel student)
         {
             var studentInputData = JsonConvert.DeserializeObject<StudentCommandViewModel>(student.InputData);
             studentInputData.StudentsMedia = student.StudentsMedia;
-            _studentsService.AddOrUpdateStudent(studentInputData);
+            _studentsService.AddStudent(studentInputData);
+            return Ok(new { status = "Ok" });
+        }
+
+        [Route("UpdateStudent")]
+        public ActionResult UpdateStudent([FromBody]StudentViewModel student)
+        {
+            _studentsService.UpdateStudent(student);
             return Ok(new { status = "Ok" });
         }
 

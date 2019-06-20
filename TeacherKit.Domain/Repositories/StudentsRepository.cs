@@ -1,9 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using TeacherKit.Domain.Context;
-using TeacherKit.Domain.Models;
 
 namespace TeacherKit.Domain.Repositories
 {
@@ -79,24 +77,6 @@ namespace TeacherKit.Domain.Repositories
             _db.SaveChanges();
         }
 
-        public void AddNotes(StudentModel entity, IEnumerable<NoteModel> noteModel)
-        {
-            foreach (var info in noteModel)
-            {
-                entity.Notes.Add(info);
-            }
-        }
-
-        public void DeleteNotes(StudentModel entity, IEnumerable<NoteModel> noteModel)
-        {
-            foreach (var info in entity.Notes.ToList())
-            {
-                var data = noteModel.FirstOrDefault(it => it.Id == info.Id);
-                if (data != null) continue;
-                entity.Notes.Remove(info);
-            }
-        }
-
         public void Delete(StudentModel student)
         {
             _db.Notes.RemoveRange(student.Notes);
@@ -107,25 +87,10 @@ namespace TeacherKit.Domain.Repositories
             _db.Students.Remove(student);
             _db.SaveChanges();
         }
-        public void UpdatePhotos(List<StudentMediaModel> entity, List<StudentMediaModel> studentMedia)
-        {
-            foreach (StudentMediaModel media in studentMedia)
-            {
-                var entityMedia = entity.FirstOrDefault(it => it.ImageName == media.ImageName);
-                if (entityMedia != null)
-                {
-                    entity.Remove(entityMedia);
-                }
-                else
-                {
-                    entity.Add(media);
-                }
-            }
-        }
 
         public void DeleteData<T>(List<T> data) where T : class
         {
-            foreach (T entity in data)
+            foreach (var entity in data)
             {
                 _db.Entry(entity).State = EntityState.Deleted;
             }

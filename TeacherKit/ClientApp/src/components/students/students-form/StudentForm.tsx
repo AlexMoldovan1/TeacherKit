@@ -73,7 +73,7 @@ const activeStudent: StudentViewModel = {
   studentsMediaFiles: [],
   notes: [],
   adress: "",
-  gender: "",
+  gender: "male",
   star: false,
   parentInfo: {
     id: 0,
@@ -294,14 +294,14 @@ export class StudentForm extends React.Component<Props, State> {
 
   private handleDeletePhotoForEditedStudent(index: any, image: string[]) {
     let studentsMedia = this.state.studentsMediaName;
-    this.state.studentsMediaDeletedData.push(studentsMedia.splice(index, 1)[0]);
+    this.state.studentsMediaDeletedData.push(studentsMedia.splice(index, 1));
 
     this.setState({
       activeStudent: {
         ...this.state.activeStudent,
-        studentsMediaFiles: this.state.studentsMediaDeletedData
-      },
-      studentsMediaName: studentsMedia
+        studentsMediaFiles: studentsMedia
+      }
+      // studentsMediaName: studentsMedia
     });
   }
 
@@ -329,8 +329,6 @@ export class StudentForm extends React.Component<Props, State> {
 
   private handleSavedBtnPressed(): void {
     this.savePressed = true;
-    let stepsError = false;
-    let ingredientsError = false;
     let detailsError = false;
 
     if (
@@ -345,7 +343,19 @@ export class StudentForm extends React.Component<Props, State> {
       this.handleDetailsError(false);
     }
 
-    if (stepsError || ingredientsError || detailsError) {
+    if (
+      this.state.activeStudent.parentInfo.firstName === "" ||
+      this.state.activeStudent.parentInfo.lastName === "" ||
+      this.state.activeStudent.parentInfo.adress === "" ||
+      this.state.activeStudent.parentInfo.phone === ""
+    ) {
+      this.handleParentInfoError(true);
+      detailsError = true;
+    } else {
+      this.handleParentInfoError(false);
+    }
+
+    if (detailsError) {
       return;
     }
 
@@ -376,8 +386,21 @@ export class StudentForm extends React.Component<Props, State> {
     }
   }
 
+  private handleParentInfoError(isError: boolean) {
+    let parentInfoTabs = document.getElementById(
+      "bp3-tab-title_StudentFormTabs_ParentInfoTab"
+    );
+    if (parentInfoTabs) {
+      if (isError) {
+        parentInfoTabs.classList.replace("student-tab", "student-tab-error");
+      } else {
+        parentInfoTabs.classList.replace("student-tab-error", "student-tab");
+      }
+    }
+  }
+
   private handleSubmit(callback?: Function) {
-    this.props.studentsStore.AddOrUpdateStudent(
+    this.props.studentsStore.AddStudent(
       this.state.activeStudent,
       this.state.studentsMediaFile,
       callback

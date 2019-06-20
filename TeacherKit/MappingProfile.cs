@@ -16,11 +16,26 @@ namespace TeacherKit
             CreateMap<StudentCommandViewModel, StudentModel>()
                 .ForMember(StudentCommandViewModel => StudentCommandViewModel.StudentsMedia,
                     mediaViewModelInModel => mediaViewModelInModel.Ignore());
+            CreateMap<StudentViewModel, StudentModel>()
+                .ForMember(d => d.StudentsMedia, opt => opt.MapFrom(x => x.StudentsMediaFiles));
+            CreateMap<ClassModel, ClassesQueryViewModel>()
+                .ForMember(d => d.ClassMediaQueryModel, opt => opt.MapFrom(x => x.ClassesMediaFiles))
+                .ForMember(d => d.ClassesMediaModel, opt => opt.MapFrom(x => x.ClassesMediaFiles))
+                .ForMember(d => d.ClassIconQueryModel, opt => opt.MapFrom(x => x.ClassMediaIcon))
+                .ForMember(d => d.ClassIconModel, opt => opt.MapFrom(x => x.ClassMediaIcon))
+                .ForMember(d => d.Students, opt => opt.MapFrom(x => x.Students));
+            CreateMap<ClassesCommandViewModel, ClassModel> ()
+                .ForMember(d => d.ClassesMediaFiles, opt => opt.Ignore())
+                .ForMember(d => d.ClassMediaIcon, opt => opt.Ignore());
             CreateMap<UserViewModel, UserModel>();
             CreateMap<UserModel, UserViewModel>();
             CreateMap<ParentInfoViewModel, ParentInfo>();
             CreateMap<ParentInfo, ParentInfoViewModel>();
             CreateMap<NotesViewModel, NoteModel>();
+            CreateMap<GroupViewModel, GroupModel>();
+            CreateMap<GroupModel, GroupViewModel>();
+            CreateMap<ClassMediaModel, ClassViewMediaModel>();
+            CreateMap<ClassMediaIcon, ClassViewMediaModel>();
             CreateMap<NoteModel, NotesViewModel>();
             CreateMap<StudentMediaModel, MediaViewModel>();
             CreateMap<MediaViewModel, StudentMediaModel>();

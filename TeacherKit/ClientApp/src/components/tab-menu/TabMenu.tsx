@@ -42,24 +42,6 @@ class TabMenu extends React.Component<Props, State> {
     if (searchString == "") searchString = encodeURI(" ");
     this.setState({ redirectTo: "/searchResults/" + searchString });
     this.props.filteredStore.loadFilteredList(searchString);
-    // this.props.filteredStore.filteredListModels = [
-    //   {
-    //     id: 1,
-    //     name: "Mirii",
-    //     star: true,
-    //     filteredListMedia: { imageName: "" },
-    //     type: FilteredType.Student,
-    //     iconName: ""
-    //   },
-    //   {
-    //     id: 2,
-    //     name: "Clasa albinutelor",
-    //     star: true,
-    //     filteredListMedia: { imageName: "" },
-    //     type: FilteredType.Class,
-    //     iconName: ""
-    //   }
-    // ];
   }
 
   private handleRedirect(): React.ReactNode {
@@ -97,7 +79,7 @@ class TabMenu extends React.Component<Props, State> {
                 to="/students/all"
                 onClick={() => this.changeActiveTab(HeaderTabs.students)}
               >
-                <span className="icon-ingredients-list">
+                <span className="icon-students">
                   <Icon icon={studentsIcon} />
                 </span>
                 Students
@@ -105,25 +87,25 @@ class TabMenu extends React.Component<Props, State> {
             </li>
             <li
               className={classNames({
-                active: this.isActive(HeaderTabs.shoppingList)
+                active: this.isActive(HeaderTabs.classes)
               })}
             >
               <Link
-                to="/shoppingList/all"
-                onClick={() => this.changeActiveTab(HeaderTabs.shoppingList)}
+                to="/classes/all"
+                onClick={() => this.changeActiveTab(HeaderTabs.classes)}
               >
-                <Icon className="icon-shopping-cart" icon="people" />
+                <Icon className="icon-classes" icon="people" />
                 Classes
               </Link>
             </li>
             <li
               className={classNames({
-                active: this.isActive(HeaderTabs.mealPlan)
+                active: this.isActive(HeaderTabs.activities)
               })}
             >
               <Link
-                to="/mealPlan/add"
-                onClick={() => this.changeActiveTab(HeaderTabs.mealPlan)}
+                to="/activities/add"
+                onClick={() => this.changeActiveTab(HeaderTabs.activities)}
               >
                 <Icon className="icon-calendar" icon="calendar" />
                 Activities

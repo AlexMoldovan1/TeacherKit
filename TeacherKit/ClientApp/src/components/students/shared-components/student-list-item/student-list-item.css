@@ -48,10 +48,31 @@
   bottom: 75px;
   border: transparent;
   opacity: 0.7;
+  text-align: center;
   font-size: 34px;
 }
 
-.buttonAddStar {
+.student-button-add-to-class {
+  position: relative;
+  right: 60px;
+  background: #007dc2
+    linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.5) 81%
+    );
+}
+
+.student-button-add-to-class svg {
+  vertical-align: baseline !important;
+}
+
+.iconStar {
+  vertical-align: baseline !important;
+}
+
+.buttons-side {
   text-align: center;
 }
 
@@ -63,7 +84,7 @@
   outline: none;
 }
 
-.student-button-rating {
+.student-button-star {
   outline: none;
   right: 10px;
   background-color: #ffffff;

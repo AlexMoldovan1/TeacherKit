@@ -5,7 +5,14 @@ import "./student-list-item.css";
 import { Redirect } from "react-router-dom";
 import { StudentQueryViewModel } from "../../../../view-models/student";
 import MyIcon from "../../../../shared/student-icon/MyIcon";
-import { AnchorButton, Button, Dialog, Intent } from "@blueprintjs/core";
+import {
+  AnchorButton,
+  Button,
+  Dialog,
+  Intent,
+  Tooltip,
+  Icon
+} from "@blueprintjs/core";
 
 interface Props {
   student: StudentQueryViewModel;
@@ -59,6 +66,8 @@ export class StudentListItem extends React.Component<Props, State> {
     this.handleClose();
   }
 
+  private handleAddToClass(evet: any) {}
+
   private handleOpen = () => this.setState({ isOpen: true });
 
   private handleClose = () => this.setState({ isOpen: false });
@@ -79,21 +88,32 @@ export class StudentListItem extends React.Component<Props, State> {
           >
             {this.props.student.lastName + " " + this.props.student.firstName}
           </div>
+          <div
+            className="student-all-button student-button-add-to-class"
+            onClick={this.handleAddToClass.bind(this)}
+          >
+            <Tooltip content="Add to class" position="bottom">
+              <Icon icon="add-to-artifact" iconSize={30} />
+            </Tooltip>
+          </div>
           {this.props.student.star ? (
             <div>
-              <button
-                type="button"
-                className="student-all-button student-button-rating active"
-                onClick={this.handleOpen}
-              >
-                &#9733;
-              </button>
+              <div className="student-all-button student-button-star">
+                <Tooltip content="Remove from star students" position="bottom">
+                  <Icon
+                    icon="star"
+                    onClick={this.handleOpen}
+                    iconSize={30}
+                    className="active iconStar"
+                  />
+                </Tooltip>
+              </div>
               <Dialog
                 className="bp3-dialog-header"
                 onClose={this.handleClose}
                 {...this.state}
               >
-                <div>
+                <div className="buttons-side">
                   <div className="bp3-dialog-body">
                     <span className="addStarColor">
                       {this.props.student.lastName +
@@ -120,19 +140,22 @@ export class StudentListItem extends React.Component<Props, State> {
             </div>
           ) : (
             <div>
-              <button
-                type="button"
-                className="student-all-button student-button-rating normal "
-                onClick={this.handleOpen}
-              >
-                &#9733;
-              </button>
+              <div className="student-all-button student-button-star">
+                <Tooltip content="Add to star students" position="bottom">
+                  <Icon
+                    icon="star"
+                    onClick={this.handleOpen}
+                    iconSize={30}
+                    className="normal iconStar"
+                  />
+                </Tooltip>
+              </div>
               <Dialog
                 className="bp3-dialog-header"
                 onClose={this.handleClose}
                 {...this.state}
               >
-                <div>
+                <div className="buttons-side">
                   <div className="bp3-dialog-body">
                     <span className="addStarColor">
                       {this.props.student.lastName +

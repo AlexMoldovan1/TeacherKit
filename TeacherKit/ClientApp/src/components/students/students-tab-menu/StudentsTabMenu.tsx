@@ -34,7 +34,7 @@ export default class StudentsTabMenu extends React.Component<Props> {
                 "student-tab-menu": true
               })}
             >
-              <Link to="/students/stars">Stars students</Link>
+              <Link to="/students/stars">Star students</Link>
             </li>
             <li
               className={classNames({

@@ -20,7 +20,7 @@ namespace TeacherKit.Services
             _mapper = mapper;
         }
 
-        public void AddOrUpdateStudent(StudentCommandViewModel student)
+        public void AddStudent(StudentCommandViewModel student)
         {
             var filenames = HandleFileUploads(student);
             if (student.StudentsMediaFiles != null)
@@ -32,6 +32,13 @@ namespace TeacherKit.Services
             }
             var studentModel = _mapper.Map<StudentModel>(student);
             AddUploadedFiles(studentModel, filenames);
+
+            _studentsRepository.AddOrUpdateStudent(studentModel);
+        }
+
+        public void UpdateStudent(StudentViewModel student)
+        { 
+            var studentModel = _mapper.Map<StudentModel>(student);
 
             _studentsRepository.AddOrUpdateStudent(studentModel);
         }

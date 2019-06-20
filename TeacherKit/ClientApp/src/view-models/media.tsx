@@ -8,3 +8,12 @@ export class StudentsMediaViewModel {
     this.imageName = imageName;
   }
 }
+
+export class ClassMediaViewModel {
+  @observable
+  public imageName: string;
+
+  constructor(imageName: string) {
+    this.imageName = imageName;
+  }
+}

@@ -1,7 +1,7 @@
 export enum HeaderTabs {
   home,
   students,
-  shoppingList,
-  mealPlan,
+  classes,
+  activities,
   search
 }

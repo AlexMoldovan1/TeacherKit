@@ -2,22 +2,15 @@ import * as React from "react";
 import { StudentsStore } from "../../../store/students-store";
 import { inject, observer } from "mobx-react";
 import "./student-view.css";
+import "../shared-components/student-list-item/student-list-item.css";
 import { StudentQueryViewModel } from "../../../view-models/student";
 import { Icon, Overlay, Tooltip } from "@blueprintjs/core";
-// import { Ingredients } from "./recipe-view-elements/Ingredients";
-// import { Steps } from "./recipe-view-elements/Steps";
-// import { NutritionInfoStore } from "../../../store/NutritionInfoStore";
-// import { IngredientStore } from "../../../store/ingredient-store";
 import Lightbox from "lightbox-react";
 import { Redirect } from "react-router-dom";
-// import { LightboxVideoComponent } from "./recipe-view-elements/LightboxComponent";
-// import { Media } from "./recipe-view-elements/Media";
-// import { Constants } from "../../../shared/constants";
-// import { Details } from "./recipe-view-elements/Details";
-// import { Notes } from "./recipe-view-elements/Notes";
-// import { NutritionInfo } from "./recipe-view-elements/NutritionInfo";
 import { LightboxVideoComponent } from "./student-view-elements/LightboxComponent";
 import { Media } from "./student-view-elements/Media";
+import { Details } from "./student-view-elements/Details";
+import { Notes } from "./student-view-elements/Notes";
 
 interface Match {
   params: {
@@ -32,7 +25,7 @@ interface Props {
 }
 
 interface State {
-  isOpenIngredients: boolean;
+  isOpenNotes: boolean;
   isOpenSteps: boolean;
   isOpenImage: boolean;
   isOpenVideo: boolean;
@@ -46,7 +39,7 @@ interface State {
 }
 
 const initialState: State = {
-  isOpenIngredients: false,
+  isOpenNotes: false,
   isOpenSteps: false,
   isOpenImage: false,
   isOpenVideo: false,
@@ -80,7 +73,6 @@ const initialState: State = {
 };
 
 @inject("studentsStore")
-// @inject("ingredientStore")
 @observer
 export class StudentView extends React.Component<Props, State> {
   private images;
@@ -106,11 +98,9 @@ export class StudentView extends React.Component<Props, State> {
     });
   }
 
-  private handleOpenIngredients = () =>
-    this.setState({ isOpenIngredients: true });
+  private handleOpenNotes = () => this.setState({ isOpenNotes: true });
 
-  private handleCloseIngredients = () =>
-    this.setState({ isOpenIngredients: false });
+  private handleCloseNotes = () => this.setState({ isOpenNotes: false });
 
   private handleOpenSteps = () => this.setState({ isOpenSteps: true });
 
@@ -222,10 +212,10 @@ export class StudentView extends React.Component<Props, State> {
     );
   }
 
-  private showIngredientsOverlay() {
+  private showNotesOverlay() {
     return (
       <Overlay
-        isOpen={this.state.isOpenIngredients}
+        isOpen={this.state.isOpenNotes}
         hasBackdrop={false}
         autoFocus={true}
         usePortal={false}
@@ -236,15 +226,11 @@ export class StudentView extends React.Component<Props, State> {
               color="#f25800"
               icon="minimize"
               iconSize={20}
-              onClick={this.handleCloseIngredients}
+              onClick={this.handleCloseNotes}
             />
           </div>
           <br />
-          {/* <Ingredients
-            ingredients={this.state.activeRecipe.ingredients}
-            styleClass="big-ingredients"
-            checked={this.state.checked}
-          /> */}
+          <Notes notes={this.state.activeStudent.notes} />
         </div>
       </Overlay>
     );
@@ -286,7 +272,7 @@ export class StudentView extends React.Component<Props, State> {
 
   private showImages() {
     return (
-      <div className="column media-container">
+      <div className="column media-container border-section">
         <div className="row big-image">
           <div className="column big-image">
             {this.state.activeStudent.studentsMedia.length > 0 &&
@@ -313,7 +299,7 @@ export class StudentView extends React.Component<Props, State> {
     );
   }
 
-  private showIngredients() {
+  private showNotes() {
     return (
       <div className="column border-section">
         <div className="student-expand-button">
@@ -321,17 +307,13 @@ export class StudentView extends React.Component<Props, State> {
             color="#f25800"
             icon="maximize"
             iconSize={20}
-            onClick={this.handleOpenIngredients}
+            onClick={this.handleOpenNotes}
           />
         </div>
         <div className="bookmark-icon">
           <Icon color="#f25800" icon="bookmark" iconSize={50} />
         </div>
-        {/* <Ingredients
-          ingredients={this.state.activeRecipe.ingredients}
-          styleClass="small-ingredients"
-          checked={this.state.checked}
-        /> */}
+        <Notes notes={this.state.activeStudent.notes} />
       </div>
     );
   }
@@ -362,7 +344,7 @@ export class StudentView extends React.Component<Props, State> {
     let updatedStudent = this.state.activeStudent;
     updatedStudent.star = false;
 
-    this.props.studentsStore.AddOrUpdateStudent(this.state.activeStudent, []);
+    this.props.studentsStore.UpdateStudent(this.state.activeStudent);
   };
 
   private handleSetStars = () => {
@@ -371,7 +353,7 @@ export class StudentView extends React.Component<Props, State> {
     });
     let updatedStudent = this.state.activeStudent;
     updatedStudent.star = true;
-    this.props.studentsStore.AddOrUpdateStudent(updatedStudent, []);
+    this.props.studentsStore.UpdateStudent(updatedStudent);
   };
   render() {
     return (
@@ -391,7 +373,7 @@ export class StudentView extends React.Component<Props, State> {
               </div>
               <div className="icon" onClick={this.handleShoppingCartClick}>
                 <Tooltip content="Add to class" position="top">
-                  <Icon icon="shopping-cart" iconSize={30} />
+                  <Icon icon="add-to-artifact" iconSize={30} />
                 </Tooltip>
               </div>
 
@@ -399,10 +381,10 @@ export class StudentView extends React.Component<Props, State> {
                 <div className="icon">
                   <Tooltip content="Remove from stars students" position="top">
                     <Icon
-                      icon="heart"
-                      iconSize={30}
+                      icon="star"
                       onClick={this.handleDeleteStars}
-                      className=" active"
+                      iconSize={30}
+                      className="active"
                     />
                   </Tooltip>
                 </div>
@@ -410,10 +392,10 @@ export class StudentView extends React.Component<Props, State> {
                 <div className="icon">
                   <Tooltip content="Add to stars students" position="top">
                     <Icon
-                      icon="heart"
+                      icon="star"
                       onClick={this.handleSetStars}
                       iconSize={30}
-                      className=" normal"
+                      className="normal"
                     />
                   </Tooltip>
                 </div>
@@ -422,27 +404,15 @@ export class StudentView extends React.Component<Props, State> {
           </div>
 
           {this.hasImages() && this.showLightbox()}
-
-          {this.showIngredientsOverlay()}
+          {this.showNotesOverlay()}
           {this.showStepsOverlay()}
 
           <div className="row">
             {this.showImages()}
-
-            {this.showIngredients()}
-
-            {/* <Details activeRecipe={this.state.activeRecipe} /> */}
+            <Details activeStudent={this.state.activeStudent} />
+            {this.showNotes()}
           </div>
-
-          <div className="row">
-            {/* <Notes notes={this.state.activeRecipe.notes} /> */}
-
-            {this.showSteps()}
-
-            {/* <NutritionInfo
-            nutritionInfos={this.state.activeRecipe.nutritionInfos}
-            /> */}
-          </div>
+          <div className="row">{this.showSteps()}</div>
         </div>
       )
     );

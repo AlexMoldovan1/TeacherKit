@@ -73,7 +73,7 @@ export class StudentsList extends React.Component<Props, State> {
   }
 
   handleSetStars(student: StudentCommandViewModel) {
-    this.props.studentsStore.AddOrUpdateStudent(student, student.studentsMedia);
+    this.props.studentsStore.AddStudent(student, student.studentsMedia);
   }
 
   private handleFilterByGender(gender: string) {

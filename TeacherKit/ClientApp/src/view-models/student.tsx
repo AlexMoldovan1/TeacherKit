@@ -59,9 +59,16 @@ export class StudentQueryViewModel extends StudentViewModel {
 
   @computed
   get iconName() {
-    return this.studentsMedia.length > 0
-      ? "/Images/" + this.studentsMedia[0].imageName
-      : undefined;
+    let src: string = "";
+    for (let i = 0; i < this.studentsMedia.length; i++) {
+      let extension = this.studentsMedia[i].imageName.split(".").pop();
+      if (extension === "mp4") src = "";
+      else {
+        src = "/Images/" + this.studentsMedia[i].imageName;
+        break;
+      }
+    }
+    return src;
   }
 }
 

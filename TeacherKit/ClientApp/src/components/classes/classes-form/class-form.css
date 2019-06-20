@@ -1,0 +1,109 @@
+.add-edit-class {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 30px;
+}
+
+.class-form {
+  display: flex;
+  width: 800px;
+  flex-direction: column;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 80px;
+}
+
+.save-class {
+  background-color: #d81b60 !important;
+}
+.cancel-class {
+  background-color: #808080;
+}
+
+.bp3-button {
+  width: 80px;
+}
+
+.bp3-tab.class-tab {
+  border: 1px solid black;
+  border-radius: 8px 8px 0 0 !important;
+  margin: 0px !important;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.bp3-tab-panel.class-tab {
+  border: 1px solid black;
+  margin: 0px;
+  padding: 10px;
+  height: 630px;
+  overflow-y: auto;
+}
+
+.submit-button {
+  padding-top: 30px;
+}
+
+.bp3-tab {
+  font-weight: bold;
+}
+
+.bp3-tab-indicator-wrapper ~ .bp3-tab[aria-selected="true"] {
+  background-color: #d81b60 !important;
+  color: black;
+}
+
+.bp3-tab.class-tab,
+.bp3-tab.class-tab-error {
+  border: 1px solid black;
+  border-radius: 8px 8px 0 0 !important;
+  margin: 0px !important;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.bp3-tab.class-tab svg {
+  visibility: hidden;
+}
+
+.bp3-tab.class-tab-error svg {
+  color: #d22d27;
+}
+
+div .scrollbarStyle div::-webkit-scrollbar {
+  width: 30px;
+  right: 0;
+  top: 0;
+  overflow-x: scroll;
+}
+
+/*flechas*/
+div .scrollbarStyle div::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url(/UtilsImages/up.png);
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+div .scrollbarStyle div::-webkit-scrollbar-button:vertical:increment {
+  background-image: url(/UtilsImages/down.png);
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+}
+
+div .scrollbarStyle div::-webkit-scrollbar-track {
+  border-left: 1px solid black;
+}
+
+div .scrollbarStyle div::-webkit-scrollbar-thumb {
+  background: #d6d6d6;
+  border-radius: 10px;
+  border: 1px solid black;
+  border-right: 0px;
+}
+
+div .scrollbarStyle div::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}

@@ -26,8 +26,10 @@ namespace TeacherKit
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IStudentsRepositoy, StudentsRepository>();
+            services.AddTransient<IClassesRepository, ClassesRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IStudentsService, StudentService>();
+            services.AddTransient<IClassesService, ClassesService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IFilteredListService, FilteredListService>();
             services.AddSingleton<TeacherKitContext>();

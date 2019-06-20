@@ -23,8 +23,19 @@ export class StudentsApiService {
     return data;
   }
 
-  addOrUpdateStudent(student: any): any {
-    const url = "/api/Students/AddOrUpdateStudent";
+  async updateStudent(student: any): Promise<number> {
+    const url = "/api/Students/UpdateStudent";
+    let header: RequestInit = {
+      ...DELETE_HEADERS,
+      body: JSON.stringify(student)
+    };
+    const response = await fetch(url, header);
+    return response.status;
+    // return AxiosInstance.post(url, student).then(r => r.status);
+  }
+
+  addStudent(student: any): any {
+    const url = "/api/Students/AddStudent";
     return AxiosInstance.post(url, student).then(r => r.status);
   }
 

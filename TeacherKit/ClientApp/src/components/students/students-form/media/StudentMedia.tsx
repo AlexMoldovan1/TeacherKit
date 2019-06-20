@@ -41,6 +41,10 @@ export class StudentMedia extends React.Component<Props, State> {
           dataURL: this.props.media[i].imageName,
           isVideo: false
         };
+        let extension = uploadElement.dataURL.split(".").pop();
+        if (extension === "mp4") uploadElement.isVideo = true;
+        else uploadElement.isVideo = false;
+
         images.push(uploadElement);
       }
       this.setState({ ...this.state, uploadedEditedImages: images });

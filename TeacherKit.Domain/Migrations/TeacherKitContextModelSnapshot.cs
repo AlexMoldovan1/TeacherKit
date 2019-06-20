@@ -19,17 +19,93 @@ namespace TeacherKit.Domain.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("TeacherKit.Domain.Models.ClassMediaIcon", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ImageName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ClassMediaIcon");
+                });
+
+            modelBuilder.Entity("TeacherKit.Domain.Models.ClassMediaModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ClassModelId");
+
+                    b.Property<string>("ImageName");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassModelId");
+
+                    b.ToTable("ClassMediaModels");
+                });
+
+            modelBuilder.Entity("TeacherKit.Domain.Models.ClassModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ClassMediaIconId");
+
+                    b.Property<int>("Code");
+
+                    b.Property<DateTime>("CourseEndDate");
+
+                    b.Property<DateTime>("CourseStartDate");
+
+                    b.Property<bool>("Stars");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassMediaIconId");
+
+                    b.ToTable("Classes");
+                });
+
+            modelBuilder.Entity("TeacherKit.Domain.Models.GroupModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ClassModelId");
+
+                    b.Property<string>("Content");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassModelId");
+
+                    b.ToTable("Groups");
+                });
+
             modelBuilder.Entity("TeacherKit.Domain.Models.NoteModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("ClassModelId");
+
                     b.Property<string>("NoteContent");
 
                     b.Property<int?>("StudentModelId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClassModelId");
 
                     b.HasIndex("StudentModelId");
 
@@ -105,6 +181,8 @@ namespace TeacherKit.Domain.Migrations
 
                     b.Property<int>("Age");
 
+                    b.Property<int?>("ClassModelId");
+
                     b.Property<int>("Code");
 
                     b.Property<string>("Email");
@@ -123,13 +201,40 @@ namespace TeacherKit.Domain.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClassModelId");
+
                     b.HasIndex("ParentInfoId");
 
                     b.ToTable("Students");
                 });
 
+            modelBuilder.Entity("TeacherKit.Domain.Models.ClassMediaModel", b =>
+                {
+                    b.HasOne("TeacherKit.Domain.Models.ClassModel")
+                        .WithMany("ClassesMediaFiles")
+                        .HasForeignKey("ClassModelId");
+                });
+
+            modelBuilder.Entity("TeacherKit.Domain.Models.ClassModel", b =>
+                {
+                    b.HasOne("TeacherKit.Domain.Models.ClassMediaIcon", "ClassMediaIcon")
+                        .WithMany()
+                        .HasForeignKey("ClassMediaIconId");
+                });
+
+            modelBuilder.Entity("TeacherKit.Domain.Models.GroupModel", b =>
+                {
+                    b.HasOne("TeacherKit.Domain.Models.ClassModel")
+                        .WithMany("Groups")
+                        .HasForeignKey("ClassModelId");
+                });
+
             modelBuilder.Entity("TeacherKit.Domain.Models.NoteModel", b =>
                 {
+                    b.HasOne("TeacherKit.Domain.Models.ClassModel")
+                        .WithMany("Notes")
+                        .HasForeignKey("ClassModelId");
+
                     b.HasOne("TeacherKit.Domain.StudentModel")
                         .WithMany("Notes")
                         .HasForeignKey("StudentModelId");
@@ -144,6 +249,10 @@ namespace TeacherKit.Domain.Migrations
 
             modelBuilder.Entity("TeacherKit.Domain.StudentModel", b =>
                 {
+                    b.HasOne("TeacherKit.Domain.Models.ClassModel")
+                        .WithMany("Students")
+                        .HasForeignKey("ClassModelId");
+
                     b.HasOne("TeacherKit.Domain.Models.ParentInfo", "ParentInfo")
                         .WithMany()
                         .HasForeignKey("ParentInfoId");

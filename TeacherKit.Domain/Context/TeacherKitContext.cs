@@ -10,6 +10,10 @@ namespace TeacherKit.Domain.Context
         public DbSet<NoteModel> Notes{ get; set; }
         public DbSet<ParentInfo> ParentInfo { get; set; }
         public DbSet<StudentMediaModel> StudentMediaModel { get; set; }
+        public DbSet<ClassMediaModel> ClassMediaModels { get; set; }
+        public DbSet<ClassMediaIcon> ClassMediaIcon { get; set; }
+        public DbSet<GroupModel> Groups { get; set; }
+        public DbSet<ClassModel> Classes{ get; set; }
         public DbSet<UserModel> Users { get; set; }
 
         public TeacherKitContext()

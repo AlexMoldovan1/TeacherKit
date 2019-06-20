@@ -1,12 +1,12 @@
 import { observable, action, computed } from "mobx";
 import { HeaderTabs } from "../view-models/header-tabs";
 import { StudentsTabs } from "../view-models/students-tabs";
-// import { ShoppingListTabs } from "../view-models/shopping-list-tabs";
+import { ClassesTabs } from "../view-models/classes-tabs";
 
 export class ViewStore {
   @observable headerActivatedTab: HeaderTabs = HeaderTabs.home;
   @observable studentsActivatedTab: StudentsTabs;
-  // @observable shoppingListActivatedTab: ShoppingListTabs;
+  @observable classesActivatedTab: ClassesTabs;
 
   @computed get activeHeaderTab() {
     return this.headerActivatedTab;
@@ -16,9 +16,9 @@ export class ViewStore {
     return this.studentsActivatedTab;
   }
 
-  // @computed get activeShoppingListTab() {
-  //   return this.shoppingListActivatedTab;
-  // }
+  @computed get activeClassesTab() {
+    return this.classesActivatedTab;
+  }
 
   @action.bound
   changeActiveHeaderTab(tab: HeaderTabs) {
@@ -30,10 +30,10 @@ export class ViewStore {
     this.studentsActivatedTab = tab;
   }
 
-  // @action.bound
-  // changeActiveShoppingListTab(tab: ShoppingListTabs) {
-  //   this.shoppingListActivatedTab = tab;
-  // }
+  @action.bound
+  changeActiveClassesTab(tab: ClassesTabs) {
+    this.classesActivatedTab = tab;
+  }
 }
 
 export default new ViewStore();

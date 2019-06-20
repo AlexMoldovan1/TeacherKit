@@ -1,0 +1,92 @@
+.class-details {
+  justify-content: space-between;
+}
+
+.class-width-inputs {
+  width: 650px;
+}
+
+.class-code {
+  margin-right: 452px;
+}
+
+.course-date-label {
+  width: 15% !important;
+}
+
+.cStyle {
+  position: relative;
+  display: inline-block;
+  width: 650px;
+  border: 1px solid lightgrey;
+  overflow: auto;
+  margin-left: 47px;
+}
+
+.iStyle {
+  display: inline-block;
+  font-size: 0.9em;
+  margin: 5px;
+  width: auto;
+  border: 0;
+}
+
+.groupStyle {
+  display: inline-block;
+  background-color: #d81b60;
+  color: white;
+  font-size: 0.9em;
+  margin: 5px;
+  border: 1px solid lightblue;
+  border-radius: 4px;
+  padding: 4px;
+  cursor: pointer;
+  width: auto;
+}
+
+div.class-file-upload {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  height: 35px;
+  margin-left: 37px;
+}
+
+input[type="button"].class-file-upload {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  border: 1px solid grey;
+}
+
+input[type="file"].class-file-upload {
+  display: block !important;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 2;
+}
+
+.divForMediaClass {
+  border: 1px solid lightgrey;
+  background-color: #eeeeee;
+  border-radius: 5px;
+  margin: 14px;
+  width: 755px;
+  align-self: center;
+  height: 395px;
+}
+
+.imageUploadForClass {
+  width: 745px;
+  height: 395px;
+  padding: 8px;
+  padding-bottom: 12px;
+}

@@ -18,7 +18,9 @@ import AccountDetailsEditRoute from "./components/welcome/account-details-edit";
 import SearchTabRoute from "./components/search-results";
 import StudentStarsRoute from "./components/students/students-stars";
 import SingleStudentRoute from "./components/students/student-view";
-import BackgroundImage from "./shared/UtilsImages/loginBackground.jpg";
+import ClassesTabMenuRoute from "./components/classes/classes-tab-menu";
+import ClassesRoute from "./components/classes/classes-list";
+import ClassesFormRoute from "./components/classes/classes-form";
 
 interface State {
   logged: any;
@@ -103,6 +105,9 @@ class App extends React.Component<{}, State> {
                     <SearchTabRoute />
                     <StudentStarsRoute />
                     <SingleStudentRoute />
+                    <ClassesTabMenuRoute />
+                    <ClassesRoute />
+                    <ClassesFormRoute />
                   </React.Fragment>
                 ) : (
                   <React.Fragment>

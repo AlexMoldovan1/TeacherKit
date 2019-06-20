@@ -27,6 +27,7 @@ ul.a {
   background-color: #eeeeee;
   position: relative;
   float: left;
+  width: 200px;
 }
 
 .a .liForMedia {

@@ -4,7 +4,23 @@
   position: relative;
 }
 
+.section-title {
+  font-size: 22px !important;
+  font-family: "Sofia" !important;
+}
+
+.second-section {
+  margin-top: 30px !important;
+}
+
+.border-section {
+  border: 1px solid #d81b60;
+  border-radius: 3px;
+}
+
 .column {
+  padding: 30px;
+  margin: 7px 10px;
   flex-basis: 100%;
 }
 
@@ -29,7 +45,7 @@
 .heading {
   display: inline;
   text-decoration: underline;
-  text-decoration-color: #46b8da;
+  text-decoration-color: #d81b60;
   font-size: 40px;
 }
 
@@ -63,10 +79,6 @@
   margin-top: -33px;
 }
 
-.section-content {
-  margin-top: 30px;
-}
-
 .nutrition-table {
   margin: auto;
   border: 1px solid #cdd0d6;
@@ -87,11 +99,17 @@
 }
 
 .note-card {
-  background-color: #ddf1ff;
-  border: 1px solid rgb(221, 221, 221);
+  background-color: #f8a1c1;
+  /* text-decoration-color: #d17e9c; */
+  border: 1px solid #fa498a;
+  font-style: italic;
   padding: 15px;
   margin: 15px;
   border-radius: 3px;
+}
+
+.notes h2 {
+  font-weight: bold;
 }
 
 .overlay-content {
@@ -135,16 +153,8 @@
 }
 
 .student-details hr {
-  border-color: #46b8da;
+  border-color: #d81b60;
   border-width: 3px;
-}
-
-.details-summary {
-  margin: 30px 0;
-}
-
-.time-details {
-  display: inline;
 }
 
 .student-details .column {
@@ -162,19 +172,21 @@
   display: inline;
 }
 
-.media-container img {
-  max-width: 200px;
-  width: 200px;
+.media-container .big-image img {
+  max-width: 100%;
+  width: 400px;
+  height: 350px;
+}
+
+.media-container .small-image img {
+  max-width: 100%;
+  width: 250px;
   height: 200px;
 }
 
 .big-image {
   padding: 0;
   margin: 10px 5px;
-}
-
-.servings {
-  margin-top: 20px;
 }
 
 .bookmark-icon-up {

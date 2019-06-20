@@ -13124,11 +13124,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Personal\\Licenta\\TeacherKit\\TeacherKit.csproj",
+      "projectUniqueName": "D:\\Personal\\Licenta\\Licenta-TeacherKit\\TeacherKit\\TeacherKit.csproj",
       "projectName": "TeacherKit",
-      "projectPath": "D:\\Personal\\Licenta\\TeacherKit\\TeacherKit.csproj",
+      "projectPath": "D:\\Personal\\Licenta\\Licenta-TeacherKit\\TeacherKit\\TeacherKit.csproj",
       "packagesPath": "C:\\Users\\alexandrumoldovan\\.nuget\\packages\\",
-      "outputPath": "D:\\Personal\\Licenta\\TeacherKit\\obj\\",
+      "outputPath": "D:\\Personal\\Licenta\\Licenta-TeacherKit\\TeacherKit\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13147,8 +13147,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\Personal\\Licenta\\TeacherKit.Domain\\TeacherKit.Domain.csproj": {
-              "projectPath": "D:\\Personal\\Licenta\\TeacherKit.Domain\\TeacherKit.Domain.csproj"
+            "D:\\Personal\\Licenta\\Licenta-TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj": {
+              "projectPath": "D:\\Personal\\Licenta\\Licenta-TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj"
             }
           }
         }

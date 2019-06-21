@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using TeacherKit.Services;
 using TeacherKit.ViewModels;
 
@@ -26,6 +27,13 @@ namespace TeacherKit.Controllers
         public StudentQueryViewModel GetStudentById(int id)
         {
             return _studentsService.GetById(id);
+        }
+
+
+        [Route("GetStudentsByClassId/{id}")]
+        public List<StudentQueryViewModel> GetStudentsByClassId(int id)
+        {
+            return _studentsService.GetStudentsByClassId(id);
         }
 
         [Route("AddStudent")]

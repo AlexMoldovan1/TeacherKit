@@ -3,6 +3,7 @@ import ClassesApiInstance, {
 } from "./api-services/class-api.service";
 import { ClassQueryViewModel, ClassViewModel } from "../view-models/class";
 import { observable, computed, action } from "mobx";
+import { StudentViewModel } from "src/view-models/student";
 
 export class ClassesStore {
   private classesApi: ClassesApiService;

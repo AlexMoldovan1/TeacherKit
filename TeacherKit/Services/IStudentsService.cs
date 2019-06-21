@@ -12,7 +12,7 @@ namespace TeacherKit.Services
         StudentQueryViewModel GetById(int id);
         void AddStudent(StudentCommandViewModel student);
         void UpdateStudent(StudentViewModel student);
-
+        List<StudentQueryViewModel> GetStudentsByClassId(int classId);
         void DeleteStudent(int studentId);
     }
 }

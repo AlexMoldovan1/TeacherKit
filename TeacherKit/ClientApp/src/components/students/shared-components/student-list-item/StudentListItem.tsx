@@ -93,9 +93,6 @@ export class StudentListItem extends React.Component<Props, State> {
   }
 
   render() {
-    let MakeItem = function(X) {
-      return <option>{X}</option>;
-    };
     return (
       this.handleRedirect() || (
         <div className="list-item">

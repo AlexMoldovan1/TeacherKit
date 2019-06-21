@@ -142,9 +142,9 @@ export class StudentForm extends React.Component<Props, State> {
     this.setState({
       activeStudent: {
         ...this.state.activeStudent,
-        studentsMediaFiles: [],
-        studentsMediaFile: []
-      }
+        studentsMediaFiles: []
+      },
+      studentsMediaFile: []
     });
   }
   private resetMediaDeletedData() {

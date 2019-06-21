@@ -23,6 +23,15 @@ export class StudentsApiService {
     return data;
   }
 
+  async getStudentsByClassId(
+    classId: number
+  ): Promise<StudentQueryViewModel[]> {
+    const url = "/api/Students/getStudentsByClassId/" + classId;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  }
+
   async updateStudent(student: any): Promise<number> {
     const url = "/api/Students/UpdateStudent";
     let header: RequestInit = {

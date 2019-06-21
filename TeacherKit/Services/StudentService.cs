@@ -110,5 +110,11 @@ namespace TeacherKit.Services
         {
             return _mapper.Map<StudentQueryViewModel>(_studentsRepository.GetStudentById(studentId));
         }
+
+        public List<StudentQueryViewModel> GetStudentsByClassId(int classId)
+        {
+            return _mapper.Map<List<StudentQueryViewModel>>(_studentsRepository.GetStudentsByClassId(classId));
+        }
+
     }
 }

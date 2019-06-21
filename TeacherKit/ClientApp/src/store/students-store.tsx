@@ -10,6 +10,8 @@ import StudentsApiInstance, {
 export class StudentsStore {
   private studentApi: StudentsApiService;
   @observable
+  studentsByClassId: StudentQueryViewModel[] = [];
+  @observable
   students: StudentQueryViewModel[] = [];
   @observable
   activeStudent: StudentQueryViewModel;
@@ -70,6 +72,16 @@ export class StudentsStore {
     this.studentApi.getStudentById(id).then(data => {
       this.activeStudent = data;
       loadedStudentCallback(data);
+    });
+  }
+
+  @action
+  loadStudentsByClassId(classId: number, callback?: Function) {
+    this.studentApi.getStudentsByClassId(classId).then(data => {
+      this.studentsByClassId = data;
+      if (callback !== undefined) {
+        callback(data);
+      }
     });
   }
 

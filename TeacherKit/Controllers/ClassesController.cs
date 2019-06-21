@@ -41,13 +41,6 @@ namespace TeacherKit.Controllers
             return Ok(new { status = "Ok" });
         }
 
-        //[Route("AddStudentToClass")]
-        //public ActionResult AddStudentToClass([FromBody]ClassesCommandViewModel classCommandModel)
-        //{
-        //    _classesService.AddStudentToClass(classCommandModel);
-        //    return Ok(new { status = "Ok" });
-        //}
-
         [Route("GetClassById/{id}")]
         public ClassesQueryViewModel GetClassById(int id)
         {

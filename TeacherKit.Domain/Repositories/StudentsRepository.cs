@@ -23,6 +23,13 @@ namespace TeacherKit.Domain.Repositories
                 .ToList();
         }
 
+        public List<StudentModel> GetStudentsByClassId(int classId)
+        {
+            return _db.Students.Where(x => x.ClassModelId == classId)
+                .Include(e => e.StudentsMedia)
+                .ToList();
+        }
+
         public StudentModel GetStudentById(int id)
         {
             return _db.Students

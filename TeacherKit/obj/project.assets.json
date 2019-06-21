@@ -5867,7 +5867,7 @@
       ]
     },
     "Microsoft.AspNetCore.Razor.Design/2.1.1": {
-      "sha512": "f8PKGcxiezL1RVqmnmrazj24Mj4KCTSXqwdotl7Lc+82h8iLV7ItxEIShTJakG7M9iw0ZuCocM0J/IhYesdQrg==",
+      "sha512": "1XHObHLx6A0/57ZmLG9gfKMO/Z/gQjRXPFWQDMlPZGYwcfgufvSdmI2+RYvR5DGkbba9HIHC35ClNQ2yVNIohw==",
       "type": "package",
       "path": "microsoft.aspnetcore.razor.design/2.1.1",
       "hasTools": true,
@@ -8185,7 +8185,6 @@
       "path": "remotion.linq/2.2.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "lib/net35/Remotion.Linq.XML",
         "lib/net35/Remotion.Linq.dll",
         "lib/net40/Remotion.Linq.XML",
@@ -9181,7 +9180,6 @@
       "path": "system.diagnostics.contracts/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -9789,7 +9787,6 @@
       "path": "system.interactive.async/3.1.1",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "lib/net45/System.Interactive.Async.dll",
         "lib/net45/System.Interactive.Async.xml",
         "lib/net46/System.Interactive.Async.dll",
@@ -10348,7 +10345,6 @@
       "path": "system.net.http/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/Xamarinmac20/_._",
@@ -13118,37 +13114,37 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alexandrumoldovan\\.nuget\\packages\\": {},
+    "C:\\Users\\M.Alex\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Personal\\Licenta-Git-Last\\TeacherKit\\TeacherKit\\TeacherKit.csproj",
+      "projectUniqueName": "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit\\TeacherKit.csproj",
       "projectName": "TeacherKit",
-      "projectPath": "D:\\Personal\\Licenta-Git-Last\\TeacherKit\\TeacherKit\\TeacherKit.csproj",
-      "packagesPath": "C:\\Users\\alexandrumoldovan\\.nuget\\packages\\",
-      "outputPath": "D:\\Personal\\Licenta-Git-Last\\TeacherKit\\TeacherKit\\obj\\",
+      "projectPath": "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit\\TeacherKit.csproj",
+      "packagesPath": "C:\\Users\\M.Alex\\.nuget\\packages\\",
+      "outputPath": "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\alexandrumoldovan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\M.Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {},
-        "https://pkgs.dev.azure.com/sdl/_packaging/SDLNuget/nuget/v3/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\Personal\\Licenta-Git-Last\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj": {
-              "projectPath": "D:\\Personal\\Licenta-Git-Last\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj"
+            "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj": {
+              "projectPath": "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj"
             }
           }
         }

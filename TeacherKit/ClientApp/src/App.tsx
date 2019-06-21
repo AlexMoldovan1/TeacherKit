@@ -21,6 +21,7 @@ import SingleStudentRoute from "./components/students/student-view";
 import ClassesTabMenuRoute from "./components/classes/classes-tab-menu";
 import ClassesRoute from "./components/classes/classes-list";
 import ClassesFormRoute from "./components/classes/classes-form";
+import ClassViewRoute from "./components/classes/class-view";
 
 interface State {
   logged: any;
@@ -108,6 +109,7 @@ class App extends React.Component<{}, State> {
                     <ClassesTabMenuRoute />
                     <ClassesRoute />
                     <ClassesFormRoute />
+                    <ClassViewRoute />
                   </React.Fragment>
                 ) : (
                   <React.Fragment>

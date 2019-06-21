@@ -1,5 +1,6 @@
 import { ClassQueryViewModel } from "../../view-models/class";
 import AxiosInstance from "axios";
+import { StudentViewModel } from "src/view-models/student";
 
 const HEADERS = {
   method: "DELETE",
@@ -18,6 +19,13 @@ export class ClassesApiService {
 
   async getClassById(classId: number): Promise<ClassQueryViewModel> {
     const url = "/api/Classes/GetClassById/" + classId;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  }
+
+  async getStudentsByClassId(classId: number): Promise<StudentViewModel[]> {
+    const url = "/api/Classes/getStudentsByClassId/" + classId;
     const response = await fetch(url);
     const data = await response.json();
     return data;

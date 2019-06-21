@@ -38,7 +38,8 @@
   font-size: large;
 }
 
-.topSide {
+.bp3-icon > svg {
+  display: inline-block !important;
 }
 
 @keyframes App-logo-spin {

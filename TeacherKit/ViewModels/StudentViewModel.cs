@@ -19,6 +19,7 @@ namespace TeacherKit.ViewModels
         public ParentInfoViewModel ParentInfo { get; set; }
         public virtual List<MediaViewModel> StudentsMediaFiles { get; set; }
         public List<NotesViewModel> Notes { get; set; }
+        public int ClassModelId { get; set; }
     }
 
     public class StudentCommandViewModel : StudentViewModel

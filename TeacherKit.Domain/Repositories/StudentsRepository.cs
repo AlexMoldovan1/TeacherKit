@@ -56,7 +56,7 @@ namespace TeacherKit.Domain.Repositories
                     studentEntity.Email = student.Email;
                     studentEntity.Adress = student.Adress;
                     studentEntity.Star = student.Star;
-
+                    studentEntity.ClassModelId = student.ClassModelId;
                     _db.Entry(studentEntity.ParentInfo).State = EntityState.Deleted;
                     _db.ParentInfo.Update(student.ParentInfo);
 

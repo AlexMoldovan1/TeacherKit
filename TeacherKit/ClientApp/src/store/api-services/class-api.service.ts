@@ -27,5 +27,15 @@ export class ClassesApiService {
     const url = "/api/Classes/AddClass";
     return AxiosInstance.post(url, classModel).then(r => r.status);
   }
+
+  async addStudentToClass(classModel: any): Promise<any> {
+    const url = "/api/Classes/AddStudentToClass";
+    let header: RequestInit = {
+      ...HEADERS,
+      body: JSON.stringify(classModel)
+    };
+    const response = await fetch(url, header);
+    return response.status;
+  }
 }
 export default new ClassesApiService();

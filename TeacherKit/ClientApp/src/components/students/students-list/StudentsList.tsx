@@ -12,9 +12,13 @@ import "../../../shared/shared-css/list-all.css";
 import { StudentsTabs } from "../../../view-models/students-tabs";
 import { StudentListView } from "../shared-components/student-list-view/StudentListView";
 import { StudentListFilters } from "../shared-components/student-list-filters/StudentListFilters";
+import { ClassQueryViewModel, ClassViewModel } from "src/view-models/class";
+import { ClassesStore } from "src/store/class-store";
+import { number } from "prop-types";
 
 interface Props {
   studentsStore: StudentsStore;
+  classesStore: ClassesStore;
   viewStore: ViewStore;
   handleStudentDetails: Function;
 }
@@ -27,6 +31,8 @@ interface State {
   filter: {
     gender: string;
   };
+  classId: number;
+  activeClass: ClassViewModel;
 }
 
 const initialState: State = {
@@ -34,21 +40,38 @@ const initialState: State = {
   students: [],
   redirectTo: "",
   dataWasReceived: true,
-  filter: { gender: "" }
+  filter: { gender: "" },
+  classId: 0,
+  activeClass: {
+    id: 0,
+    title: "",
+    code: 0,
+    courseStartDate: new Date(),
+    courseEndDate: new Date(),
+    groups: [],
+    stars: false,
+    notes: [],
+    classesMediaModel: [],
+    classIconModel: { imageName: "" },
+    students: []
+  }
 };
 
 @inject("studentsStore")
+@inject("classesStore")
 @inject("viewStore")
 @observer
 export class StudentsList extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = initialState;
-    this.props.studentsStore.loadStudents(() =>
-      this.setState({
-        students: this.props.studentsStore.students,
-        dataWasReceived: true
-      })
+    this.props.studentsStore.loadStudents(
+      () =>
+        this.setState({
+          students: this.props.studentsStore.students,
+          dataWasReceived: true
+        }),
+      () => this.props.classesStore.loadClasses()
     );
   }
   newListOfStudents: StudentViewModel[] = [];
@@ -76,9 +99,20 @@ export class StudentsList extends React.Component<Props, State> {
     this.props.studentsStore.AddStudent(student, student.studentsMedia);
   }
 
+  handleAddToClass(student: StudentCommandViewModel) {
+    student.classModelId = this.state.classId;
+    this.props.studentsStore.AddStudent(student, []);
+  }
+
   private handleFilterByGender(gender: string) {
     this.setState({
       filter: { gender: gender }
+    });
+  }
+
+  private handleChangeClass(classId: number) {
+    this.setState({
+      classId: classId
     });
   }
 
@@ -99,6 +133,11 @@ export class StudentsList extends React.Component<Props, State> {
     return result;
   }
 
+  getClasses(): ClassQueryViewModel[] {
+    let result = this.props.classesStore.getClasses;
+    return result;
+  }
+
   render(): React.ReactNode {
     return (
       this.handleRedirect() || (
@@ -110,9 +149,12 @@ export class StudentsList extends React.Component<Props, State> {
           />
           <StudentListView
             students={this.getStudentsItems.bind(this)()}
+            classes={this.getClasses.bind(this)()}
             studentsToOmit={this.state.studentToOmit}
             waitingForData={!this.state.dataWasReceived}
             handleSetStars={this.handleSetStars.bind(this)}
+            handleAddToClass={this.handleAddToClass.bind(this)}
+            handleChangeClass={this.handleChangeClass.bind(this)}
           />
         </div>
       )

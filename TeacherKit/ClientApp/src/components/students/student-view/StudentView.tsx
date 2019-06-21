@@ -55,6 +55,7 @@ const initialState: State = {
     email: "",
     adress: "",
     star: false,
+    classModelId: 0,
     parentInfo: {
       id: 0,
       firstName: "",

@@ -25,6 +25,12 @@ namespace TeacherKit.Services
             return _mapper.Map<List<ClassesQueryViewModel>>(_classesRepository.GetAll());
         }
 
+        //public void AddStudentToClass(ClassesCommandViewModel classCommandModel)
+        //{
+        //    _classesRepository.AddStudentToClass(_mapper.Map<ClassModel>(classCommandModel));
+        //}
+
+
         public void AddOrUpdateClass(ClassesCommandViewModel classCommandModel)
         {
             var filenames = HandleUploadFilesMedia(classCommandModel);

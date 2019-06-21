@@ -46,6 +46,7 @@ interface State {
     adress: string;
     gender: string;
     star: boolean;
+    classModelId: number;
     parentInfo: {
       id: number;
       firstName: string;
@@ -70,6 +71,7 @@ const activeStudent: StudentViewModel = {
   age: 0,
   phone: "",
   email: "",
+  classModelId: 0,
   studentsMediaFiles: [],
   notes: [],
   adress: "",
@@ -138,7 +140,11 @@ export class StudentForm extends React.Component<Props, State> {
 
   private resetActiveStudentMediaFile() {
     this.setState({
-      activeStudent: { ...this.state.activeStudent, studentsMediaFiles: [] }
+      activeStudent: {
+        ...this.state.activeStudent,
+        studentsMediaFiles: [],
+        studentsMediaFile: []
+      }
     });
   }
   private resetMediaDeletedData() {

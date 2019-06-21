@@ -37,12 +37,11 @@ export class ClassesStore {
   loadClasses(callback?: Function) {
     this.classesApi
       .getClasses()
-      .then(
-        data =>
-          (this.classes = data.map(
-            classModel => new ClassQueryViewModel(classModel)
-          ))
-      )
+      .then(data => {
+        this.classes = data.map(
+          classModel => new ClassQueryViewModel(classModel)
+        );
+      })
       .then(() => {
         if (callback !== undefined) {
           callback();
@@ -51,10 +50,10 @@ export class ClassesStore {
   }
 
   @action
-  loadActiveClass(id: number, loadedClassCallback: Function) {
+  loadActiveClass(id: number, loadedClassCallback?: Function) {
     this.classesApi.getClassById(id).then(data => {
       this.activeClass = data;
-      loadedClassCallback(data);
+      if (loadedClassCallback != undefined) loadedClassCallback(data);
     });
   }
 
@@ -66,6 +65,15 @@ export class ClassesStore {
   @computed
   get getStars(): ClassQueryViewModel[] {
     return this.classes.filter(classModel => classModel.stars);
+  }
+
+  @action
+  public AddStudentToClass(classModel: ClassViewModel, callback?: Function) {
+    this.classesApi.addStudentToClass(classModel).then(() => {
+      if (callback !== undefined) {
+        callback();
+      }
+    });
   }
 
   @action.bound

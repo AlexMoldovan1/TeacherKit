@@ -7,6 +7,7 @@ namespace TeacherKit.Services
     {
         List<ClassesQueryViewModel> GetAll();
         void AddOrUpdateClass(ClassesCommandViewModel classCommandModel);
+        //void AddStudentToClass(ClassesCommandViewModel classCommandModel);
         ClassesQueryViewModel GetClassById(int id);
     }
 }

@@ -4,12 +4,16 @@ import "../../../../shared/shared-css/list-all.css";
 import { StudentQueryViewModel } from "../../../../view-models/student";
 import { StudentListItem } from "../student-list-item/StudentListItem";
 import Spinner from "../../../../shared/spinner/Spinner";
+import { ClassQueryViewModel } from "src/view-models/class";
 
 interface Props {
   students: StudentQueryViewModel[];
+  classes: ClassQueryViewModel[];
   waitingForData: boolean;
   studentsToOmit: number[];
   handleSetStars: Function;
+  handleAddToClass: Function;
+  handleChangeClass: Function;
 }
 
 @observer
@@ -30,7 +34,10 @@ export class StudentListView extends React.Component<Props> {
                 <div key={index}>
                   <StudentListItem
                     student={student}
+                    classes={this.props.classes}
                     handleSetStars={this.props.handleSetStars}
+                    handleAddToClass={this.props.handleAddToClass}
+                    handleChangeClass={this.props.handleChangeClass}
                     waitingForData={this.props.waitingForData}
                   />
                 </div>

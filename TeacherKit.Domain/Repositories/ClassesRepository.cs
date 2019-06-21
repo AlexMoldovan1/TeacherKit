@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using TeacherKit.Domain.Context;
@@ -22,6 +23,7 @@ namespace TeacherKit.Domain.Repositories
                 .Include(cl => cl.Groups)
                 .Include(cl => cl.Notes)
                 .Include(cl => cl.ClassMediaIcon)
+                .Include(cl => cl.Students)
                 .ToList();
         }
 
@@ -35,6 +37,30 @@ namespace TeacherKit.Domain.Repositories
             _db.Classes.Add(classModel);
             _db.SaveChanges();
         }
+
+        //public void AddStudentToClass(ClassModel classModel)
+        //{
+        //    if (classModel.Id == 0) return;
+        //    var classEntity = _db.Classes.Include("Students").FirstOrDefault(it => it.Id == classModel.Id);
+
+        //    if (classEntity == null) return;
+        //    DeleteData(classEntity.Students);
+        //    classEntity.Students.AddRange(classModel.Students);
+        //    _db.Classes.Update(classEntity);
+
+        //    var student = classModel.Students.FirstOrDefault(x => x.Id == classEntity.Students.FirstOrDefault(y => y.Id == x.Id).Id);
+        //    var studentEntity = _db.Students.Include("ClassModel").Include("Notes").Include("ParentInfo").Include("StudentsMedia").FirstOrDefault(it => it.Id == student.Id);
+
+        //    //studentEntity.ClassModel = classModel;
+        //    student.ClassModel = classModel;
+        //    _db.Entry(studentEntity).State = EntityState.Deleted;
+        //    _db.Students.Update(student);
+
+        //    _db.Students.Update(student ?? throw new InvalidOperationException());
+        //    _db.SaveChanges();
+
+        //}
+
 
         public void AddOrUpdateClass(ClassModel classModel)
         {

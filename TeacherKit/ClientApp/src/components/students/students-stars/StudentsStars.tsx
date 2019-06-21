@@ -10,10 +10,13 @@ import { StudentsTabs } from "../../../view-models/students-tabs";
 import { StudentListView } from "../../students/shared-components/student-list-view/StudentListView";
 import { StudentListFilters } from "../shared-components/student-list-filters/StudentListFilters";
 import "../../../shared/shared-css/list-all.css";
+import { ClassQueryViewModel } from "src/view-models/class";
+import { ClassesStore } from "src/store/class-store";
 
 interface Props {
   studentsStore: StudentsStore;
   viewStore: ViewStore;
+  classesStore: ClassesStore;
 }
 
 interface State {
@@ -21,15 +24,18 @@ interface State {
   students: StudentQueryViewModel[];
   dataWasReceived: boolean;
   filter: { gender: string };
+  classId: string;
 }
 
 const initialState: State = {
   studentsToOmit: [],
   students: [],
   dataWasReceived: false,
-  filter: { gender: "" }
+  filter: { gender: "" },
+  classId: ""
 };
 
+@inject("classesStore")
 @inject("studentsStore")
 @inject("viewStore")
 @observer
@@ -50,6 +56,16 @@ export class StudentsStars extends React.Component<Props, State> {
 
   handleSetStars(student: StudentCommandViewModel) {
     this.props.studentsStore.AddStudent(student, student.studentsMedia);
+  }
+
+  handleAddToClass(student: StudentCommandViewModel) {
+    this.props.studentsStore.AddStudent(student, student.studentsMedia);
+  }
+
+  private handleChangeClass(classId: string) {
+    this.setState({
+      classId: classId
+    });
   }
 
   handleFilterByGender(gender: string) {
@@ -77,6 +93,11 @@ export class StudentsStars extends React.Component<Props, State> {
     this.setState({ studentsToOmit: studentsToOmit });
   }
 
+  getClasses(): ClassQueryViewModel[] {
+    let result = this.props.classesStore.getClasses;
+    return result;
+  }
+
   render(): React.ReactNode {
     return (
       <div className="list-all">
@@ -87,9 +108,12 @@ export class StudentsStars extends React.Component<Props, State> {
         />
         <StudentListView
           students={this.getStudentsItems.bind(this)()}
+          classes={this.getClasses.bind(this)}
           studentsToOmit={this.state.studentsToOmit}
           handleSetStars={this.handleSetStars.bind(this)}
+          handleAddToClass={this.handleAddToClass.bind(this)}
           waitingForData={!this.state.dataWasReceived}
+          handleChangeClass={this.handleChangeClass.bind(this)}
         />
       </div>
     );

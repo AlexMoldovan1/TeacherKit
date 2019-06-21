@@ -29,6 +29,7 @@ export class StudentsStore {
       email: "",
       adress: "",
       star: false,
+      classModelId: 0,
       parentInfo: {
         id: 0,
         firstName: "",
@@ -45,7 +46,7 @@ export class StudentsStore {
   }
 
   @action
-  loadStudents(callback?: Function) {
+  loadStudents(callback?: Function, callback2?: Function) {
     this.studentApi
       .getStudents()
       .then(
@@ -57,6 +58,9 @@ export class StudentsStore {
       .then(() => {
         if (callback !== undefined) {
           callback();
+        }
+        if (callback2 !== undefined) {
+          callback2();
         }
       });
   }

@@ -16,6 +16,10 @@ namespace TeacherKit
             CreateMap<StudentCommandViewModel, StudentModel>()
                 .ForMember(StudentCommandViewModel => StudentCommandViewModel.StudentsMedia,
                     mediaViewModelInModel => mediaViewModelInModel.Ignore());
+            CreateMap<StudentModel, StudentViewModel>()
+                .ForMember(d => d.StudentsMediaFiles, opt => opt.MapFrom(x => x.StudentsMedia))
+                .ForMember(d => d.ParentInfo, opt => opt.MapFrom(x => x.ParentInfo))
+                .ForMember(d => d.Notes, opt => opt.MapFrom(x => x.Notes));
             CreateMap<StudentViewModel, StudentModel>()
                 .ForMember(d => d.StudentsMedia, opt => opt.MapFrom(x => x.StudentsMediaFiles));
             CreateMap<ClassModel, ClassesQueryViewModel>()
@@ -26,7 +30,8 @@ namespace TeacherKit
                 .ForMember(d => d.Students, opt => opt.MapFrom(x => x.Students));
             CreateMap<ClassesCommandViewModel, ClassModel> ()
                 .ForMember(d => d.ClassesMediaFiles, opt => opt.Ignore())
-                .ForMember(d => d.ClassMediaIcon, opt => opt.Ignore());
+                .ForMember(d => d.ClassMediaIcon, opt => opt.Ignore())
+                .ForMember(d => d.Students, opt => opt.MapFrom(x => x.Students));
             CreateMap<UserViewModel, UserModel>();
             CreateMap<UserModel, UserViewModel>();
             CreateMap<ParentInfoViewModel, ParentInfo>();

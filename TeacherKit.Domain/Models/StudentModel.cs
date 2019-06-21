@@ -19,5 +19,6 @@ namespace TeacherKit.Domain
         public ParentInfo ParentInfo { get; set; }
         public virtual List<StudentMediaModel> StudentsMedia { get; set; }
         public List<NoteModel> Notes { get; set; }
+        public int ClassModelId{ get; set; }
     }
 }

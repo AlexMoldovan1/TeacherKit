@@ -60,8 +60,9 @@ export class StudentListFilters extends React.Component<Props> {
           <select
             className="select_search filter-common"
             onChange={this.handleFilterByGender.bind(this)}
+            defaultValue=""
           >
-            <option value="" selected disabled hidden>
+            <option value="" defaultValue="Gender" disabled hidden>
               Gender
             </option>
             <option value="">All</option>

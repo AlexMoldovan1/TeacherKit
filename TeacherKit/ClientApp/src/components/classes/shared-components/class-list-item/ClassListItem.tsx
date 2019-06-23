@@ -77,7 +77,7 @@ export class ClassListItem extends React.Component<Props, State> {
           <div onClick={() => this.handleClick(this.props.class)}>
             <MyIcon
               src={this.props.class.iconName}
-              className="list-item-photo"
+              className="list-item-photo-class"
             />
           </div>
           <div

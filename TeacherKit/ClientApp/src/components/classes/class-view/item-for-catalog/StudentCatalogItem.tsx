@@ -1,22 +1,20 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import "../../../../shared/shared-css/list-all.css";
 import "./student-catalog-item.css";
 import { Redirect } from "react-router-dom";
-import { StudentQueryViewModel } from "../../../../view-models/student";
+import {
+  StudentQueryViewModel,
+  StudentViewModel
+} from "../../../../view-models/student";
 import MyIcon from "../../../../shared/student-icon/MyIcon";
-import { debug } from "util";
+import IconClassesElements from "../class-view-elements/IconClassesElements";
 
 interface Props {
   student: StudentQueryViewModel;
-  waitingForData: boolean;
 }
 
 interface State {
   redirectTo: string;
-  rating: number;
-  isOpenStarModal: boolean;
-  isOpenAddToClassModal: boolean;
 }
 
 @observer
@@ -24,10 +22,7 @@ export class StudentCatalogItem extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      redirectTo: "",
-      rating: 0,
-      isOpenStarModal: false,
-      isOpenAddToClassModal: false
+      redirectTo: ""
     };
   }
 
@@ -38,22 +33,35 @@ export class StudentCatalogItem extends React.Component<Props, State> {
     return null;
   }
 
-  onStarClick(nextValue) {
-    this.setState({ rating: nextValue });
-  }
-
   handleClick(student: StudentQueryViewModel) {
     this.setState({ redirectTo: "/student/" + student.id });
+  }
+
+  handleHaveImage(): string {
+    let src: string = "";
+    if (this.props.student.studentsMedia.length > 0) {
+      for (let i = 0; i < this.props.student.studentsMedia.length; i++) {
+        let extension = this.props.student.studentsMedia[i].imageName
+          .split(".")
+          .pop();
+        if (extension === "mp4") src = "";
+        else {
+          src = "/Images/" + this.props.student.studentsMedia[i].imageName;
+          break;
+        }
+      }
+    }
+    return src;
   }
 
   render() {
     return (
       this.handleRedirect() || (
-        <div className="list-item">
+        <div className="list-catalog-item">
           <div onClick={() => this.handleClick(this.props.student)}>
-            <MyIcon
-              src={"/Images/" + this.props.student.studentsMedia[0].imageName}
-              className="list-item-photo"
+            <IconClassesElements
+              src={this.handleHaveImage()}
+              className="list-item-catalog-photo"
             />
           </div>
           <div

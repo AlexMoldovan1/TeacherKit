@@ -15,6 +15,7 @@ import {
   Icon
 } from "@blueprintjs/core";
 import { ClassQueryViewModel } from "src/view-models/class";
+import { ClassesStore } from "src/store/class-store";
 
 interface Props {
   student: StudentQueryViewModel;
@@ -123,7 +124,7 @@ export class StudentListItem extends React.Component<Props, State> {
               isOpen={this.state.isOpenAddToClassModal}
             >
               <div className="buttons-side">
-                <div className="bp3-dialog-body">
+                <div className="bp3-dialog-body choiceClassForStudent">
                   <span className="addStarColor">
                     {this.props.student.lastName +
                       " " +
@@ -135,18 +136,17 @@ export class StudentListItem extends React.Component<Props, State> {
                     onChange={this.handleChangeClass.bind(this)}
                     defaultValue=""
                   >
-                    <option value="" defaultValue="Classes" disabled hidden>
-                      Classes
-                    </option>
-                    {this.props.classes.map(classModel => (
-                      <option
-                        key={classModel.id}
-                        value={classModel.id}
-                        defaultValue="Gender"
-                      >
-                        {classModel.title}
-                      </option>
-                    ))}
+                    <option value="" defaultValue="Classes" disabled hidden />
+                    {this.props.classes.length > 0 &&
+                      this.props.classes.map(classModel => (
+                        <option
+                          key={classModel.id}
+                          value={classModel.id}
+                          defaultValue="Gender"
+                        >
+                          {classModel.title}
+                        </option>
+                      ))}
                   </select>
                 </div>
                 <div className="buttonAddStar">

@@ -22,7 +22,7 @@ class MyIcon extends React.Component<Props, State> {
     ) : (
       <Icon
         icon="media"
-        className={this.props.className}
+        className="svg-image-all"
         onClick={() => this.props.onClick && this.props.onClick()}
       />
     );

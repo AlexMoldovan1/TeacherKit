@@ -47,6 +47,9 @@ namespace TeacherKit
             CreateMap<StudentModel, FilteredListViewModel>(MemberList.Destination)
                 .ForMember(d => d.FilteredListMedia, opt => opt.Ignore())
                 .ForMember(d => d.Type, opt => opt.MapFrom(x => FilteredType.Student));
+            CreateMap<ClassModel, FilteredListViewModel>(MemberList.Destination)
+               .ForMember(d => d.FilteredListMedia, opt => opt.Ignore())
+               .ForMember(d => d.Type, opt => opt.MapFrom(x => FilteredType.Class));
         }
     }
 }

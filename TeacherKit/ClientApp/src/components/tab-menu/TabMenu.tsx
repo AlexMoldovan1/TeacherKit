@@ -98,7 +98,7 @@ class TabMenu extends React.Component<Props, State> {
                 Classes
               </Link>
             </li>
-            <li
+            {/* <li
               className={classNames({
                 active: this.isActive(HeaderTabs.activities)
               })}
@@ -110,7 +110,7 @@ class TabMenu extends React.Component<Props, State> {
                 <Icon className="icon-calendar" icon="calendar" />
                 Activities
               </Link>
-            </li>
+            </li> */}
             <li
               className={classNames({
                 active: this.isActive(HeaderTabs.search)

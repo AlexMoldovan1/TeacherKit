@@ -7,6 +7,7 @@ import {
   ClassQueryViewModel,
   ClassViewModel
 } from "../../../view-models/class";
+import "../../../shared/shared-css/list-all.css";
 import { Redirect } from "react-router-dom";
 import "../../../shared/shared-css/list-all.css";
 import { ClassesTabs } from "../../../view-models/classes-tabs";
@@ -69,7 +70,6 @@ export class ClassesList extends React.Component<Props, State> {
   }
 
   handleSetStars(classModel: ClassViewModel) {
-
     this.props.classesStore.AddClass(
       classModel,
       classModel.classesMediaModel,

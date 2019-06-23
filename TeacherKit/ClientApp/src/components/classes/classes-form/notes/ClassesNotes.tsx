@@ -26,25 +26,6 @@ export class ClassesNotes extends React.Component<Props, State> {
     super(props);
     this.state = initialState;
   }
-  componentDidUpdate(prevProps, prevState) {
-    if (
-      this.props.classModel.notes.length !== prevState.notes.length &&
-      prevState.notes.length > 0
-    ) {
-      this.setState({ notes: [] });
-    }
-
-    if (
-      this.props.classModel.id &&
-      prevProps.student !== this.props.classModel
-    ) {
-      var notes: string[] = [];
-      this.props.classModel.notes.forEach(data => {
-        notes.push(data.noteContent);
-      });
-      this.setState({ ...this.state, notes: notes, currentNote: "" });
-    }
-  }
 
   private noteInputChanged(event: any): void {
     this.setState({ currentNote: event.target.value });
@@ -114,12 +95,12 @@ export class ClassesNotes extends React.Component<Props, State> {
             onClick={this.handleAddNote.bind(this)}
           />
         </div>
-        {this.state.notes.map((item, key) => {
+        {this.props.classModel.notes.map((item, key) => {
           return (
             <Note
               key={key}
               id={key}
-              content={item}
+              note={item}
               handleRemove={this.handleRemove.bind(this)}
               handleNoteValueUpdate={this.handleNoteValueUpdate.bind(this)}
             />

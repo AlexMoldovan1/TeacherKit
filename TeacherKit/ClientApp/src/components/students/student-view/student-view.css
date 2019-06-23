@@ -16,10 +16,11 @@
 .border-section {
   border: 1px solid #d81b60;
   border-radius: 3px;
+  margin-top: 30px !important;
 }
 
 .column {
-  padding: 30px;
+  padding-top: 30px;
   margin: 7px 10px;
   flex-basis: 100%;
 }
@@ -52,6 +53,7 @@
 .heading-column {
   border: 0px;
   padding-right: 30px;
+  margin-bottom: 20px;
 }
 
 .icon {

@@ -12,7 +12,6 @@ export class UserStore {
   logged: boolean;
   @observable
   statusCode: number;
-
   constructor(userApi: UserApiService) {
     this.userApi = userApi;
   }

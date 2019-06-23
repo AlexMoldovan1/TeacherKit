@@ -38,34 +38,6 @@ export class StudentDetails extends React.Component<Props, State> {
     this.state = initialState;
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // this.functie();
-    // if (this.props.student.id && prevProps.student !== this.props.student) {
-    //   this.changeValuesForEditedStudent();
-    // }
-  }
-
-  componentWillpdate() {
-    // this.functie();
-  }
-
-  // private functie(): void {
-  //   if (this.props.savePressed && this.nameRef.value === "") {
-  //     this.nameRef.classList.replace("valid", "invalid");
-  //   } else {
-  //     this.nameRef.classList.replace("invalid", "valid");
-  //   }
-  // }
-
-  // private changeValuesForEditedStudent() {
-  //   this.setState({
-  //     ...this.state,
-  //     code: this.props.student.code,
-  //     valueGender: this.props.student.gender,
-  //     age: this.props.student.age
-  //   });
-  // }
-
   private handleStudentDetailsFirstNameChange(event: any) {
     this.props.handleStudentDetailsFirstNameChange(event.target.value);
   }

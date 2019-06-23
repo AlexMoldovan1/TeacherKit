@@ -1,13 +1,14 @@
 import * as React from "react";
 import { Icon } from "@blueprintjs/core";
 import "../class-notes.css";
+import { NotesViewModel } from "src/view-models/notes";
 
 interface State {
   content: string;
 }
 
 interface Props {
-  content: string;
+  note: NotesViewModel;
   id: number;
   handleRemove: Function;
   handleNoteValueUpdate: Function;
@@ -16,7 +17,7 @@ interface Props {
 export default class Note extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.setState({ content: this.props.content });
+    this.setState({ content: this.props.note.noteContent });
   }
 
   handleDelete() {
@@ -32,7 +33,7 @@ export default class Note extends React.Component<Props, State> {
     return (
       <div className="bp3-form-group bp3-inline class-notes ">
         <textarea
-          value={this.props.content}
+          value={this.props.note.noteContent}
           className="class-note added-note"
           onChange={this.handleChange.bind(this)}
         />

@@ -2,6 +2,8 @@ import * as React from "react";
 import "./class-details.css";
 import { ClassViewModel } from "../../../../view-models/class";
 import { TextArea, NumericInput } from "@blueprintjs/core";
+import { GroupsViewModel } from "src/view-models/groups";
+import { debug } from "util";
 
 interface Props {
   classModel: ClassViewModel;
@@ -14,7 +16,7 @@ interface Props {
 interface State {
   title: string;
   code: number;
-  groups: string[];
+  groups: GroupsViewModel[];
   uploadedIcon: string | null;
 }
 
@@ -31,21 +33,22 @@ export class ClassDetails extends React.Component<Props, State> {
     this.state = initialState;
   }
 
-  componentDidUpdate(previousProps, previousState) {
+  componentDidUpdate(prevProps, prevState) {
     if (
       this.props.classModel.id &&
-      previousProps.classModel !== this.props.classModel
+      prevProps.classModel.id !== this.props.classModel.id
     ) {
-      this.changeValuesForEditedClass();
+      this.changeValuesForEditedStudent();
     }
   }
 
-  private changeValuesForEditedClass() {
+  private changeValuesForEditedStudent() {
     this.setState({
-      title: this.props.classModel.title,
+      ...this.state,
       code: this.props.classModel.code,
       uploadedIcon: this.props.classModel.classIconModel.imageName,
-      groups: this.props.classModel.groups.map(group => group.content)
+      groups: this.props.classModel.groups,
+      title: this.props.classModel.title
     });
   }
 
@@ -125,7 +128,6 @@ export class ClassDetails extends React.Component<Props, State> {
   render() {
     let groups = this.getGroups();
     const disableGroups = groups.length >= 10;
-
     return (
       <div>
         <div className="bp3-form-group bp3-inline class-details">
@@ -160,7 +162,7 @@ export class ClassDetails extends React.Component<Props, State> {
           </div>
         </div>
         <div className="bp3-form-group bp3-inline">
-          <label className="bp3-label">Icon Class**</label>
+          <label className="bp3-label">Icon Class*</label>
           <div className="class-file-upload">
             <div />
             <input

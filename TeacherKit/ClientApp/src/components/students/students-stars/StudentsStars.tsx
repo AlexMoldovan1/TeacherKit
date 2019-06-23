@@ -108,7 +108,7 @@ export class StudentsStars extends React.Component<Props, State> {
         />
         <StudentListView
           students={this.getStudentsItems.bind(this)()}
-          classes={this.getClasses.bind(this)}
+          classes={this.getClasses.bind(this)()}
           studentsToOmit={this.state.studentsToOmit}
           handleSetStars={this.handleSetStars.bind(this)}
           handleAddToClass={this.handleAddToClass.bind(this)}

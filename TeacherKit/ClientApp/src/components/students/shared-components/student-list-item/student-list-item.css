@@ -16,7 +16,7 @@
 }
 
 .list-item-photo {
-  height: auto;
+  height: 200px;
   width: 100%;
   max-height: 200px;
 }
@@ -78,6 +78,10 @@
 
 .addStarColor {
   color: #d81b60 !important;
+}
+
+.choiceClassForStudent {
+  display: inline-flex;
 }
 
 .student-all-button:focus {

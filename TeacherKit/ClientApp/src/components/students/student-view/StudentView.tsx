@@ -388,18 +388,15 @@ export class StudentView extends React.Component<Props, State> {
                           this.state.activeStudent.firstName +
                           " will be added to class: "}
                       </span>
+                      &nbsp; &nbsp;
                       <select
                         className="select_search filter-common"
                         onChange={this.handleChangeClass.bind(this)}
-                        defaultValue="Classes"
-                        value="Classes"
+                        defaultValue=""
                       >
-                        <option
-                          value="Classes"
-                          defaultValue="Classes"
-                          disabled
-                          hidden
-                        />
+                        <option value="" defaultValue="Classes" disabled hidden>
+                          Classes
+                        </option>
                         {this.state.classes.length > 0 &&
                           this.state.classes.map(classModel => (
                             <option

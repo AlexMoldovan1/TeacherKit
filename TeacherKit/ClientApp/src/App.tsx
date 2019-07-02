@@ -22,6 +22,7 @@ import ClassesTabMenuRoute from "./components/classes/classes-tab-menu";
 import ClassesRoute from "./components/classes/classes-list";
 import ClassesFormRoute from "./components/classes/classes-form";
 import ClassViewRoute from "./components/classes/class-view";
+import HomeTabRoute from "./components/home";
 
 interface State {
   logged: any;
@@ -98,6 +99,7 @@ class App extends React.Component<{}, State> {
                       viewStore={rootStore.viewStore}
                       filteredStore={rootStore.filteredStore}
                     />
+                    <HomeTabRoute />
                     <StudentsTabMenuRoute />
                     <StudentsRoute />
                     <StudentFormRoute />

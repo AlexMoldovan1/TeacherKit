@@ -16,3 +16,12 @@ E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKi
 E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.AssemblyInfo.cs
 E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.dll
 E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.pdb
+D:\Personal\Licenta-App\TeacherKit\TeacherKit.Domain\bin\Debug\netcoreapp2.1\TeacherKit.Domain.deps.json
+D:\Personal\Licenta-App\TeacherKit\TeacherKit.Domain\bin\Debug\netcoreapp2.1\TeacherKit.Domain.dll
+D:\Personal\Licenta-App\TeacherKit\TeacherKit.Domain\bin\Debug\netcoreapp2.1\TeacherKit.Domain.pdb
+D:\Personal\Licenta-App\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.csprojAssemblyReference.cache
+D:\Personal\Licenta-App\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.csproj.CoreCompileInputs.cache
+D:\Personal\Licenta-App\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.AssemblyInfoInputs.cache
+D:\Personal\Licenta-App\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.AssemblyInfo.cs
+D:\Personal\Licenta-App\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.dll
+D:\Personal\Licenta-App\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.pdb

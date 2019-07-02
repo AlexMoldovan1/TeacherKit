@@ -129,19 +129,17 @@ export class StudentListItem extends React.Component<Props, State> {
                     {this.props.student.lastName +
                       " " +
                       this.props.student.firstName +
-                      " will be added to class: "}
+                      " will be added to class:"}
                   </span>
+                  &nbsp;&nbsp;
                   <select
                     className="select_search filter-common"
                     onChange={this.handleChangeClass.bind(this)}
-                    defaultValue="Classes"
+                    defaultValue=""
                   >
-                    <option
-                      value="Classes"
-                      defaultValue="Classes"
-                      disabled
-                      hidden
-                    />
+                    <option value="" defaultValue="Classes" disabled hidden>
+                      Classes
+                    </option>
                     {this.props.classes.length > 0 &&
                       this.props.classes.map(classModel => (
                         <option

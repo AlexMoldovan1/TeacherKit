@@ -13120,11 +13120,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit\\TeacherKit.csproj",
+      "projectUniqueName": "E:\\FACULTATE\\An3-Sem2\\Licenta\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit\\TeacherKit.csproj",
       "projectName": "TeacherKit",
-      "projectPath": "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit\\TeacherKit.csproj",
+      "projectPath": "E:\\FACULTATE\\An3-Sem2\\Licenta\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit\\TeacherKit.csproj",
       "packagesPath": "C:\\Users\\M.Alex\\.nuget\\packages\\",
-      "outputPath": "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit\\obj\\",
+      "outputPath": "E:\\FACULTATE\\An3-Sem2\\Licenta\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13143,8 +13143,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj": {
-              "projectPath": "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj"
+            "E:\\FACULTATE\\An3-Sem2\\Licenta\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj": {
+              "projectPath": "E:\\FACULTATE\\An3-Sem2\\Licenta\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj"
             }
           }
         }

@@ -134,15 +134,20 @@ export class StudentListItem extends React.Component<Props, State> {
                   <select
                     className="select_search filter-common"
                     onChange={this.handleChangeClass.bind(this)}
-                    defaultValue=""
+                    defaultValue="Classes"
                   >
-                    <option value="" defaultValue="Classes" disabled hidden />
+                    <option
+                      value="Classes"
+                      defaultValue="Classes"
+                      disabled
+                      hidden
+                    />
                     {this.props.classes.length > 0 &&
                       this.props.classes.map(classModel => (
                         <option
                           key={classModel.id}
                           value={classModel.id}
-                          defaultValue="Gender"
+                          defaultValue="Class"
                         >
                           {classModel.title}
                         </option>

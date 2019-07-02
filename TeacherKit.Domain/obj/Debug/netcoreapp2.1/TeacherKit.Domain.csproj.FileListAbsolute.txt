@@ -7,3 +7,12 @@ E:\FACULTATE\An3-Sem2\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain
 E:\FACULTATE\An3-Sem2\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.AssemblyInfo.cs
 E:\FACULTATE\An3-Sem2\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.dll
 E:\FACULTATE\An3-Sem2\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.pdb
+E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\bin\Debug\netcoreapp2.1\TeacherKit.Domain.deps.json
+E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\bin\Debug\netcoreapp2.1\TeacherKit.Domain.dll
+E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\bin\Debug\netcoreapp2.1\TeacherKit.Domain.pdb
+E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.csprojAssemblyReference.cache
+E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.csproj.CoreCompileInputs.cache
+E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.AssemblyInfoInputs.cache
+E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.AssemblyInfo.cs
+E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.dll
+E:\FACULTATE\An3-Sem2\Licenta\Licenta-App\TeacherKitFromGit\TeacherKit\TeacherKit.Domain\obj\Debug\netcoreapp2.1\TeacherKit.Domain.pdb

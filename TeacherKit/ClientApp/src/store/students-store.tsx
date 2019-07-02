@@ -68,10 +68,19 @@ export class StudentsStore {
   }
 
   @action
-  loadActiveStudent(id: number, loadedStudentCallback: Function) {
+  loadActiveStudent(
+    id: number,
+    loadedStudentCallback: Function,
+    callback2?: Function
+  ) {
     this.studentApi.getStudentById(id).then(data => {
       this.activeStudent = data;
-      loadedStudentCallback(data);
+      if (loadedStudentCallback !== undefined) {
+        loadedStudentCallback(data);
+      }
+      if (callback2 !== undefined) {
+        callback2();
+      }
     });
   }
 

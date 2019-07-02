@@ -3,14 +3,27 @@ import { StudentsStore } from "../../../store/students-store";
 import { inject, observer } from "mobx-react";
 import "./student-view.css";
 import "../shared-components/student-list-item/student-list-item.css";
-import { StudentQueryViewModel } from "../../../view-models/student";
-import { Icon, Overlay, Tooltip } from "@blueprintjs/core";
+import {
+  StudentQueryViewModel,
+  StudentCommandViewModel
+} from "../../../view-models/student";
+import {
+  Icon,
+  Overlay,
+  Tooltip,
+  Dialog,
+  Intent,
+  AnchorButton,
+  Button
+} from "@blueprintjs/core";
 import Lightbox from "lightbox-react";
 import { Redirect } from "react-router-dom";
 import { LightboxVideoComponent } from "./student-view-elements/LightboxComponent";
 import { Media } from "./student-view-elements/Media";
 import { Details } from "./student-view-elements/Details";
 import { Notes } from "./student-view-elements/Notes";
+import { ClassQueryViewModel } from "src/view-models/class";
+import { ClassesStore } from "src/store/class-store";
 
 interface Match {
   params: {
@@ -20,30 +33,32 @@ interface Match {
 
 interface Props {
   studentsStore: StudentsStore;
-
+  classesStore: ClassesStore;
   match: Match;
+  handleAddToClass: Function;
+  handleChangeClass: Function;
 }
 
 interface State {
   isOpenNotes: boolean;
-  isOpenSteps: boolean;
   isOpenImage: boolean;
   isOpenVideo: boolean;
-  checked: boolean[];
 
   activeStudent: StudentQueryViewModel;
 
   photoIndex: number;
-
+  classId: number;
   redirectTo: string;
+  isOpenAddToClassModal: boolean;
+  classes: ClassQueryViewModel[];
 }
 
 const initialState: State = {
   isOpenNotes: false,
-  isOpenSteps: false,
   isOpenImage: false,
   isOpenVideo: false,
-  checked: [],
+  isOpenAddToClassModal: false,
+  classId: 0,
   activeStudent: {
     id: 0,
     firstName: "",
@@ -70,10 +85,12 @@ const initialState: State = {
     iconName: ""
   },
   photoIndex: 0,
+  classes: [],
   redirectTo: ""
 };
 
 @inject("studentsStore")
+@inject("classesStore")
 @observer
 export class StudentView extends React.Component<Props, State> {
   private images;
@@ -86,7 +103,8 @@ export class StudentView extends React.Component<Props, State> {
     if (studentId) {
       this.props.studentsStore.loadActiveStudent(
         studentId,
-        this.loadStudent.bind(this)
+        this.loadStudent.bind(this),
+        this.getClasses.bind(this)
       );
     }
 
@@ -103,10 +121,6 @@ export class StudentView extends React.Component<Props, State> {
 
   private handleCloseNotes = () => this.setState({ isOpenNotes: false });
 
-  private handleOpenSteps = () => this.setState({ isOpenSteps: true });
-
-  private handleCloseSteps = () => this.setState({ isOpenSteps: false });
-
   private handleOpenImage = index =>
     this.setState({ isOpenImage: true, photoIndex: index });
 
@@ -116,11 +130,52 @@ export class StudentView extends React.Component<Props, State> {
     });
   };
 
-  private handleShoppingCartClick = () => {
+  private handleOpenAddToClassModal = () =>
+    this.setState({ isOpenAddToClassModal: true });
+
+  private handleCloseAddToClassModal = () =>
+    this.setState({ isOpenAddToClassModal: false });
+
+  private handleChangeClass(e: any) {
     this.setState({
-      redirectTo: "/shoppingList/addRecipe/" + this.state.activeStudent.id
+      classId: parseInt(e.target.value)
     });
+  }
+
+  handleAddToClass() {
+    this.state.activeStudent.classModelId = this.state.classId;
+    this.props.studentsStore.AddStudent(this.state.activeStudent, []);
+    this.handleCloseAddToClassModal();
+  }
+
+  private handleDeleteStars = () => {
+    this.setState({
+      activeStudent: { ...this.state.activeStudent, star: false, iconName: "" }
+    });
+    let updatedStudent = this.state.activeStudent;
+    updatedStudent.star = false;
+
+    this.props.studentsStore.UpdateStudent(this.state.activeStudent);
   };
+
+  private handleSetStars = () => {
+    this.setState({
+      activeStudent: { ...this.state.activeStudent, star: true, iconName: "" }
+    });
+    let updatedStudent = this.state.activeStudent;
+    updatedStudent.star = true;
+    this.props.studentsStore.UpdateStudent(updatedStudent);
+  };
+
+  getClasses(): ClassQueryViewModel[] {
+    this.props.classesStore.loadClasses(() => {
+      this.setState({
+        ...this.state,
+        classes: this.props.classesStore.getClasses
+      });
+    });
+    return this.props.classesStore.getClasses;
+  }
 
   private handleRedirect(): React.ReactNode {
     if (this.state.redirectTo) {
@@ -237,30 +292,6 @@ export class StudentView extends React.Component<Props, State> {
     );
   }
 
-  private showStepsOverlay() {
-    return (
-      <Overlay
-        isOpen={this.state.isOpenSteps}
-        hasBackdrop={false}
-        autoFocus={true}
-        usePortal={false}
-      >
-        <div className="overlay-content">
-          <div className="minimize-button">
-            <Icon
-              color="#f25800"
-              icon="minimize"
-              iconSize={20}
-              onClick={this.handleCloseSteps}
-            />
-          </div>
-          <br />
-          {/* <Steps steps={this.state.activeRecipe.steps} styleClass="big-steps" /> */}
-        </div>
-      </Overlay>
-    );
-  }
-
   private displayMedia(index) {
     return (
       <Media
@@ -319,43 +350,6 @@ export class StudentView extends React.Component<Props, State> {
     );
   }
 
-  private showSteps() {
-    return (
-      <div className="column border-section">
-        <div className="student-expand-button">
-          <Icon
-            color="#f25800"
-            icon="maximize"
-            iconSize={20}
-            onClick={this.handleOpenSteps}
-          />
-        </div>
-        <div className="bookmark-icon">
-          <Icon color="#f25800" icon="bookmark" iconSize={50} />
-        </div>
-        {/* <Steps steps={this.state.activeRecipe.steps} styleClass="small-steps" /> */}
-      </div>
-    );
-  }
-
-  private handleDeleteStars = () => {
-    this.setState({
-      activeStudent: { ...this.state.activeStudent, star: false, iconName: "" }
-    });
-    let updatedStudent = this.state.activeStudent;
-    updatedStudent.star = false;
-
-    this.props.studentsStore.UpdateStudent(this.state.activeStudent);
-  };
-
-  private handleSetStars = () => {
-    this.setState({
-      activeStudent: { ...this.state.activeStudent, star: true, iconName: "" }
-    });
-    let updatedStudent = this.state.activeStudent;
-    updatedStudent.star = true;
-    this.props.studentsStore.UpdateStudent(updatedStudent);
-  };
   render() {
     return (
       this.handleRedirect() || (
@@ -372,10 +366,70 @@ export class StudentView extends React.Component<Props, State> {
                   <Icon icon="edit" iconSize={30} />
                 </Tooltip>
               </div>
-              <div className="icon" onClick={this.handleShoppingCartClick}>
+              <div className="icon">
                 <Tooltip content="Add to class" position="top">
-                  <Icon icon="add-to-artifact" iconSize={30} />
+                  <Icon
+                    icon="add-to-artifact"
+                    iconSize={30}
+                    onClick={this.handleOpenAddToClassModal}
+                  />
                 </Tooltip>
+
+                <Dialog
+                  className="bp3-dialog-header"
+                  onClose={this.handleCloseAddToClassModal}
+                  isOpen={this.state.isOpenAddToClassModal}
+                >
+                  <div className="buttons-side">
+                    <div className="bp3-dialog-body choiceClassForStudent">
+                      <span className="addStarColor">
+                        {this.state.activeStudent.lastName +
+                          " " +
+                          this.state.activeStudent.firstName +
+                          " will be added to class: "}
+                      </span>
+                      <select
+                        className="select_search filter-common"
+                        onChange={this.handleChangeClass.bind(this)}
+                        defaultValue="Classes"
+                        value="Classes"
+                      >
+                        <option
+                          value="Classes"
+                          defaultValue="Classes"
+                          disabled
+                          hidden
+                        />
+                        {this.state.classes.length > 0 &&
+                          this.state.classes.map(classModel => (
+                            <option
+                              key={classModel.id}
+                              value={classModel.id}
+                              defaultValue="Class"
+                            >
+                              {classModel.title}
+                            </option>
+                          ))}
+                      </select>
+                    </div>
+                    <div className="buttonAddStar">
+                      <Button
+                        className="bp3-button"
+                        onClick={this.handleCloseAddToClassModal}
+                      >
+                        Undo
+                      </Button>
+                      <AnchorButton
+                        className="bp3-button bp3-intent-primary "
+                        onClick={this.handleAddToClass.bind(this)}
+                        intent={Intent.PRIMARY}
+                        target="_blank"
+                      >
+                        Ok
+                      </AnchorButton>
+                    </div>
+                  </div>
+                </Dialog>
               </div>
 
               {this.state.activeStudent.star ? (
@@ -406,14 +460,12 @@ export class StudentView extends React.Component<Props, State> {
 
           {this.hasImages() && this.showLightbox()}
           {this.showNotesOverlay()}
-          {this.showStepsOverlay()}
 
           <div className="row">
             {this.showImages()}
             <Details activeStudent={this.state.activeStudent} />
             {this.showNotes()}
           </div>
-          <div className="row">{this.showSteps()}</div>
         </div>
       )
     );

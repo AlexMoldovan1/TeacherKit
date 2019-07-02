@@ -6864,11 +6864,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj",
+      "projectUniqueName": "E:\\FACULTATE\\An3-Sem2\\Licenta\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj",
       "projectName": "TeacherKit.Domain",
-      "projectPath": "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj",
+      "projectPath": "E:\\FACULTATE\\An3-Sem2\\Licenta\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj",
       "packagesPath": "C:\\Users\\M.Alex\\.nuget\\packages\\",
-      "outputPath": "E:\\FACULTATE\\An3-Sem2\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\obj\\",
+      "outputPath": "E:\\FACULTATE\\An3-Sem2\\Licenta\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

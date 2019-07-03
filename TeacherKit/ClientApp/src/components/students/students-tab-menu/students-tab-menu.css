@@ -1,8 +1,15 @@
 .student-tab-menu {
-  /* background-color: #ec758f !important; */
   background-color: #ec407a !important;
 }
 
 .student-tab-menu a {
   color: white !important;
+}
+
+.bp3-tab-list {
+  align-items: initial !important;
+}
+
+ul.student-tab-menu > li.active {
+  background-color: #ff80ab !important;
 }

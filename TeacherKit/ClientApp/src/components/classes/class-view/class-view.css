@@ -29,22 +29,18 @@
 }
 
 .icon-container > .column {
-  flex-basis: 0% !important;
+  flex-basis: 100% !important;
   padding: 10px !important;
 }
 
-.rowIcon .icon-container {
-  width: 30% !important;
-}
-
 .icon-container {
-  width: 30% !important;
   height: 650px;
   overflow-y: auto;
+  width: 33% !important;
 }
 
 .catalog-container {
-  width: 72% !important;
+  width: 68% !important;
   height: 650px;
   overflow-y: auto;
 }
@@ -103,37 +99,47 @@
   display: list-item;
 }
 
-div .scrollbarStyle div::-webkit-scrollbar {
-  width: 30px;
-  right: 0;
-  top: 0;
-  overflow-x: scroll;
+.minimize-button {
+  cursor: pointer;
+  float: left;
+  padding: 20px;
+  margin: auto;
 }
 
-/*flechas*/
-div .scrollbarStyle div::-webkit-scrollbar-button:vertical:decrement {
-  background-image: url(/UtilsImages/up.png);
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
+.overlay-content-archive {
+  position: absolute;
+  left: 15%;
+  width: 82%;
+  height: 90%;
+  bottom: 10%;
+  margin: 50px;
+  float: bottom;
+  background-color: white;
+  margin: auto;
+  border: 3px solid #d81b60;
+  overflow-y: auto;
 }
 
-div .scrollbarStyle div::-webkit-scrollbar-button:vertical:increment {
-  background-image: url(/UtilsImages/down.png);
-  border-left: 1px solid black;
-  border-top: 1px solid black;
+ul.media-archive-list {
+  margin-top: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style-type: none;
 }
 
-div .scrollbarStyle div::-webkit-scrollbar-track {
-  border-left: 1px solid black;
+.media-archive-list .liForMedia {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin: 14px;
+  float: left;
+  width: 210px;
+  align-self: center;
 }
 
-div .scrollbarStyle div::-webkit-scrollbar-thumb {
-  background: #d6d6d6;
-  border-radius: 10px;
-  border: 1px solid black;
-  border-right: 0px;
-}
-
-div .scrollbarStyle div::-webkit-scrollbar-thumb:hover {
-  background: #bdbdbd;
+.media-archive-list .divForMedia {
+  margin: 7px 4px 7px 4px;
+  background-color: #eeeeee;
+  position: relative;
+  float: left;
+  width: 200px;
 }

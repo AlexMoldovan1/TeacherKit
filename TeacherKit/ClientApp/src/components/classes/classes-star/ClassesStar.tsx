@@ -37,7 +37,7 @@ const initialState: State = {
 @inject("classesStore")
 @inject("viewStore")
 @observer
-export class ClassesList extends React.Component<Props, State> {
+export class ClassesStar extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = initialState;
@@ -51,7 +51,7 @@ export class ClassesList extends React.Component<Props, State> {
   newListOfStudents: ClassViewModel[] = [];
 
   componentWillMount() {
-    this.props.viewStore.changeActiveClassesTab(ClassesTabs.all);
+    this.props.viewStore.changeActiveClassesTab(ClassesTabs.stars);
   }
 
   handleClassesToOmit(classesToOmit: number[]) {
@@ -82,7 +82,7 @@ export class ClassesList extends React.Component<Props, State> {
   }
 
   getClassesItems(): ClassQueryViewModel[] {
-    return this.props.classesStore.getClasses;
+    return this.props.classesStore.getStars;
   }
 
   render(): React.ReactNode {

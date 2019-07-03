@@ -10,10 +10,12 @@ import { ClassesTabs } from "src/view-models/classes-tabs";
 import { ClassMediaViewModel } from "src/view-models/media";
 import Lightbox from "lightbox-react";
 import { ClassQueryViewModel } from "src/view-models/class";
-import { Tooltip, Icon } from "@blueprintjs/core";
+import { Tooltip, Icon, Overlay } from "@blueprintjs/core";
 import { Media } from "src/components/students/student-view/student-view-elements/Media";
 import { CatalogView } from "./class-view-elements/CatalogView";
 import { Redirect } from "react-router";
+import { HeaderTabs } from "src/view-models/header-tabs";
+import { LightboxVideoComponent } from "src/components/students/student-view/student-view-elements/LightboxComponent";
 
 interface Match {
   params: {
@@ -34,13 +36,19 @@ interface State {
   waitingForData: boolean;
   isOpenImage: boolean;
   activeClass: ClassQueryViewModel;
+  isOpenArchive: boolean;
+  isOpenImageFromArchive: boolean;
+  photoIndex: number;
 }
 
 const initialState: State = {
   students: [],
   redirectTo: "",
+  photoIndex: 0,
   waitingForData: false,
   isOpenImage: false,
+  isOpenArchive: false,
+  isOpenImageFromArchive: false,
   activeClass: {
     id: 0,
     title: "",
@@ -64,16 +72,19 @@ const initialState: State = {
 @inject("classesStore")
 @observer
 export class ClassView extends React.Component<Props, State> {
+  private images;
+
   constructor(props: Props) {
     super(props);
     this.state = initialState;
     this.loadStudentsByClassId();
     this.loadActiveClass();
     this.props.viewStore.changeActiveClassesTab(ClassesTabs.all);
+    this.images = this.state.activeClass.classMediaQueryModel;
   }
 
   componentWillMount() {
-    this.props.viewStore.changeActiveClassesTab(ClassesTabs.all);
+    this.props.viewStore.changeActiveHeaderTab(HeaderTabs.classes);
   }
 
   loadActiveClass() {
@@ -108,6 +119,13 @@ export class ClassView extends React.Component<Props, State> {
     this.setState({ isOpenImage: true });
   };
 
+  private handleOpenImageFromArchive = index =>
+    this.setState({ isOpenImage: true, photoIndex: index });
+
+  private isVideo(src) {
+    return src.endsWith("mp4");
+  }
+
   private showLightbox() {
     return (
       <Lightbox
@@ -116,6 +134,102 @@ export class ClassView extends React.Component<Props, State> {
         }
         onCloseRequest={this.handleCloseLightbox}
         enableZoom={false}
+      />
+    );
+  }
+
+  private handleCloseLightboxFromArchive = () =>
+    this.setState({ isOpenImageFromArchive: false });
+
+  private handleNextImage = () =>
+    this.setState({
+      photoIndex: (this.state.photoIndex + 1) % this.images.length
+    });
+
+  private handlePrevImage = () =>
+    this.setState({
+      photoIndex:
+        (this.state.photoIndex + this.images.length - 1) % this.images.length
+    });
+
+  private showLightboxForArchive() {
+    return (
+      <Lightbox
+        mainSrc={
+          this.images.length > 0 ? (
+            this.isVideo(this.images[this.state.photoIndex].imageName) ? (
+              <LightboxVideoComponent
+                src={this.images[this.state.photoIndex].imageName}
+              />
+            ) : (
+              "/Images/" + this.images[this.state.photoIndex].imageName
+            )
+          ) : (
+            ""
+          )
+        }
+        nextSrc={
+          this.images.length > 0 ? (
+            this.isVideo(
+              this.images[(this.state.photoIndex + 1) % this.images.length]
+                .imageName
+            ) ? (
+              <LightboxVideoComponent
+                src={
+                  this.images[(this.state.photoIndex + 1) % this.images.length]
+                    .imageName
+                }
+              />
+            ) : (
+              "/Images/" +
+              this.images[(this.state.photoIndex + 1) % this.images.length]
+                .imageName
+            )
+          ) : (
+            ""
+          )
+        }
+        prevSrc={
+          this.images.length > 0 ? (
+            this.isVideo(
+              this.images[
+                (this.state.photoIndex + this.images.length - 1) %
+                  this.images.length
+              ].imageName
+            ) ? (
+              <LightboxVideoComponent
+                src={
+                  this.images[
+                    (this.state.photoIndex + this.images.length - 1) %
+                      this.images.length
+                  ].imageName
+                }
+              />
+            ) : (
+              "/Images/" +
+              this.images[
+                (this.state.photoIndex + this.images.length - 1) %
+                  this.images.length
+              ].imageName
+            )
+          ) : (
+            ""
+          )
+        }
+        onCloseRequest={this.handleCloseLightboxFromArchive}
+        enableZoom={false}
+        onMoveNextRequest={this.handleNextImage}
+        onMovePrevRequest={this.handlePrevImage}
+      />
+    );
+  }
+
+  private displayMediaFromArchive(index) {
+    return (
+      <Media
+        src={this.images[index].imageName}
+        index={index}
+        handleOpenImage={this.handleOpenImageFromArchive}
       />
     );
   }
@@ -147,10 +261,10 @@ export class ClassView extends React.Component<Props, State> {
 
   private handleSetStars = () => {
     this.setState({
-      activeClass: { ...this.state.activeClass, stars: false, iconName: "" }
+      activeClass: { ...this.state.activeClass, stars: true, iconName: "" }
     });
     let updatedClass = this.state.activeClass;
-    updatedClass.stars = false;
+    updatedClass.stars = true;
     this.props.classesStore.AddClass(updatedClass, [], "");
   };
 
@@ -164,6 +278,11 @@ export class ClassView extends React.Component<Props, State> {
     );
   }
 
+  private handleOpenArchiveMedia = () => this.setState({ isOpenArchive: true });
+
+  private handleCloseArchiveMedia = () =>
+    this.setState({ isOpenArchive: false });
+
   private handleRedirect(): React.ReactNode {
     if (this.state.redirectTo) {
       return <Redirect to={this.state.redirectTo} />;
@@ -172,7 +291,47 @@ export class ClassView extends React.Component<Props, State> {
     return null;
   }
 
-  private showIcon() {
+  private showArchiveMediaOverlay() {
+    return (
+      <Overlay
+        isOpen={this.state.isOpenArchive}
+        hasBackdrop={false}
+        autoFocus={true}
+        usePortal={false}
+      >
+        <div className="overlay-content-archive">
+          <div className="minimize-button">
+            <Icon
+              color="#f25800"
+              icon="cross"
+              iconSize={20}
+              onClick={this.handleCloseArchiveMedia}
+            />
+          </div>
+          <ul className="media-archive-list">
+            {this.state.activeClass.classMediaQueryModel.map(
+              (mediaModel, key) => (
+                <li className="liForMedia" key={key}>
+                  <div className="divForMedia">
+                    {this.images.length > 0 &&
+                      this.displayMediaFromArchive(key)}
+                    {/* <img
+                      className="imageUpload"
+                      style={{ width: 200, height: 200 }}
+                      src={"/Images/" + mediaModel.imageName}
+                      alt="no img"
+                    /> */}
+                  </div>
+                </li>
+              )
+            )}
+          </ul>
+        </div>
+      </Overlay>
+    );
+  }
+
+  private showClassInformation() {
     return (
       this.handleRedirect() || (
         <div className="icon-container border-section-class">
@@ -182,6 +341,11 @@ export class ClassView extends React.Component<Props, State> {
                 <label className="label-title">
                   {this.state.activeClass.title}
                 </label>
+                <div className="icon" onClick={this.handleOpenArchiveMedia}>
+                  <Tooltip content="Show media" position="top">
+                    <Icon icon="media" iconSize={30} />
+                  </Tooltip>
+                </div>
                 <div className="icon" onClick={this.handleEditClick}>
                   <Tooltip content="Edit class" position="top">
                     <Icon icon="edit" iconSize={30} />
@@ -189,7 +353,7 @@ export class ClassView extends React.Component<Props, State> {
                 </div>
                 {this.state.activeClass.stars ? (
                   <div className="icon">
-                    <Tooltip content="Remove from stars classes" position="top">
+                    <Tooltip content="Remove from star classes" position="top">
                       <Icon
                         icon="star"
                         onClick={this.handleDeleteStars}
@@ -200,7 +364,7 @@ export class ClassView extends React.Component<Props, State> {
                   </div>
                 ) : (
                   <div className="icon">
-                    <Tooltip content="Add to stars classes" position="top">
+                    <Tooltip content="Add to star classes" position="top">
                       <Icon
                         icon="star"
                         onClick={this.handleSetStars}
@@ -246,8 +410,10 @@ export class ClassView extends React.Component<Props, State> {
     return (
       <div className="view-container">
         {this.hasImages() && this.showLightbox()}
+        {this.showArchiveMediaOverlay()}
+        {this.showLightboxForArchive()}
         <div className="row">
-          {this.showIcon()}
+          {this.showClassInformation()}
           <CatalogView
             students={this.state.students}
             waitingForDate={this.state.waitingForData}

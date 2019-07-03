@@ -10,7 +10,7 @@ interface Props {
 export class Details extends React.Component<Props> {
   render() {
     return (
-      <div className="column border-section student-details">
+      <div className="column border-section-student student-details">
         <div className="bookmark-icon">
           <Icon color="#f25800" icon="bookmark" iconSize={50} />
         </div>

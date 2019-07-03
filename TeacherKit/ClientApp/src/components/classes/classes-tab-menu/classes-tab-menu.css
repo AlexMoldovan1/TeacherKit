@@ -1,8 +1,11 @@
 .class-tab-menu {
-  /* background-color: #ec758f !important; */
   background-color: #ec407a !important;
 }
 
 .class-tab-menu a {
   color: white !important;
+}
+
+ul.class-tab-menu > li.active {
+  background-color: #ff80ab !important;
 }

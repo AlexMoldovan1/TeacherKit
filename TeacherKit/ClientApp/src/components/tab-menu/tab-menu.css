@@ -45,28 +45,7 @@ ul.tabs li.active a {
   border-radius: 5px;
 }
 
-.icon-home {
-  width: 28px;
-  height: 26px;
-  margin-top: 0px;
-  margin-right: 8px;
-}
-
-.icon-students {
-  width: 28px;
-  height: 26px;
-  margin-top: 0px;
-  margin-right: 8px;
-}
-
-.icon-classes {
-  width: 28px;
-  height: 26px;
-  margin-top: 0px;
-  margin-right: 8px;
-}
-
-.icon-calendar {
+.icon-items {
   width: 28px;
   height: 26px;
   margin-top: 0px;

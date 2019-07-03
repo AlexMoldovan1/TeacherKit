@@ -3,10 +3,7 @@ import { StudentsStore } from "../../../store/students-store";
 import { inject, observer } from "mobx-react";
 import "./student-view.css";
 import "../shared-components/student-list-item/student-list-item.css";
-import {
-  StudentQueryViewModel,
-  StudentCommandViewModel
-} from "../../../view-models/student";
+import { StudentQueryViewModel } from "../../../view-models/student";
 import {
   Icon,
   Overlay,
@@ -24,6 +21,8 @@ import { Details } from "./student-view-elements/Details";
 import { Notes } from "./student-view-elements/Notes";
 import { ClassQueryViewModel } from "src/view-models/class";
 import { ClassesStore } from "src/store/class-store";
+import { ViewStore } from "src/store/view-store";
+import { HeaderTabs } from "src/view-models/header-tabs";
 
 interface Match {
   params: {
@@ -34,6 +33,7 @@ interface Match {
 interface Props {
   studentsStore: StudentsStore;
   classesStore: ClassesStore;
+  viewStore: ViewStore;
   match: Match;
   handleAddToClass: Function;
   handleChangeClass: Function;
@@ -91,6 +91,7 @@ const initialState: State = {
 
 @inject("studentsStore")
 @inject("classesStore")
+@inject("viewStore")
 @observer
 export class StudentView extends React.Component<Props, State> {
   private images;
@@ -115,6 +116,10 @@ export class StudentView extends React.Component<Props, State> {
     this.setState({
       activeStudent: student
     });
+  }
+
+  componentWillMount() {
+    this.props.viewStore.changeActiveHeaderTab(HeaderTabs.students);
   }
 
   private handleOpenNotes = () => this.setState({ isOpenNotes: true });
@@ -304,7 +309,7 @@ export class StudentView extends React.Component<Props, State> {
 
   private showImages() {
     return (
-      <div className="column media-container border-section">
+      <div className="column media-container border-section-student">
         <div className="row big-image">
           <div className="column big-image">
             {this.state.activeStudent.studentsMedia.length > 0 &&
@@ -333,7 +338,7 @@ export class StudentView extends React.Component<Props, State> {
 
   private showNotes() {
     return (
-      <div className="column border-section">
+      <div className="column border-section-student">
         <div className="student-expand-button">
           <Icon
             color="#f25800"

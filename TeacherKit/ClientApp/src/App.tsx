@@ -16,7 +16,8 @@ import DevTools from "mobx-react-devtools";
 import AccountDetailsViewRoute from "./components/welcome/account-details";
 import AccountDetailsEditRoute from "./components/welcome/account-details-edit";
 import SearchTabRoute from "./components/search-results";
-import StudentStarsRoute from "./components/students/students-stars";
+import StudentsStarRoute from "./components/students/students-stars";
+import ClassesStarRoute from "./components/classes/classes-star";
 import SingleStudentRoute from "./components/students/student-view";
 import ClassesTabMenuRoute from "./components/classes/classes-tab-menu";
 import ClassesRoute from "./components/classes/classes-list";
@@ -106,9 +107,10 @@ class App extends React.Component<{}, State> {
                     <AccountDetailsViewRoute />
                     <AccountDetailsEditRoute />
                     <SearchTabRoute />
-                    <StudentStarsRoute />
+                    <StudentsStarRoute />
                     <SingleStudentRoute />
                     <ClassesTabMenuRoute />
+                    <ClassesStarRoute />
                     <ClassesRoute />
                     <ClassesFormRoute />
                     <ClassViewRoute />

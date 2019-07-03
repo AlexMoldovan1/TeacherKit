@@ -66,7 +66,7 @@ class TabMenu extends React.Component<Props, State> {
                 to="/home"
                 onClick={() => this.changeActiveTab(HeaderTabs.home)}
               >
-                <Icon className="icon-home" icon="home" />
+                <Icon className="icon-items" icon="home" />
                 Home
               </Link>
             </li>
@@ -79,7 +79,7 @@ class TabMenu extends React.Component<Props, State> {
                 to="/students/all"
                 onClick={() => this.changeActiveTab(HeaderTabs.students)}
               >
-                <span className="icon-students">
+                <span className="icon-items">
                   <Icon icon={studentsIcon} />
                 </span>
                 Students
@@ -94,23 +94,10 @@ class TabMenu extends React.Component<Props, State> {
                 to="/classes/all"
                 onClick={() => this.changeActiveTab(HeaderTabs.classes)}
               >
-                <Icon className="icon-classes" icon="people" />
+                <Icon className="icon-items" icon="people" />
                 Classes
               </Link>
             </li>
-            {/* <li
-              className={classNames({
-                active: this.isActive(HeaderTabs.activities)
-              })}
-            >
-              <Link
-                to="/activities/add"
-                onClick={() => this.changeActiveTab(HeaderTabs.activities)}
-              >
-                <Icon className="icon-calendar" icon="calendar" />
-                Activities
-              </Link>
-            </li> */}
             <li
               className={classNames({
                 active: this.isActive(HeaderTabs.search)

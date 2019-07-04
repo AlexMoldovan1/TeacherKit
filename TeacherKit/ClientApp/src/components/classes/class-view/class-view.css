@@ -36,12 +36,11 @@
 .icon-container {
   height: 650px;
   overflow-y: auto;
-  width: 33% !important;
+  width: 36% !important;
 }
 
 .catalog-container {
-  width: 68% !important;
-  height: 650px;
+  width: 65% !important;
   overflow-y: auto;
 }
 
@@ -53,7 +52,7 @@
   border: 1px solid #d81b60;
   border-radius: 3px;
   margin-top: 30px !important;
-  height: 650px;
+  height: 750px;
 }
 
 .divForMediaIcon {
@@ -115,8 +114,8 @@
 
 .overlay-content-archive {
   position: absolute;
-  left: 15%;
-  width: 82%;
+  left: 5%;
+  width: 90%;
   height: 90%;
   bottom: 10%;
   margin: 50px;

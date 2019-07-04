@@ -421,6 +421,7 @@ export class StudentForm extends React.Component<Props, State> {
     );
 
     this.resetActiveStudentMediaFile();
+    this.resetMediaFiles();
     this.resetStudent();
     this.resetModal();
   }

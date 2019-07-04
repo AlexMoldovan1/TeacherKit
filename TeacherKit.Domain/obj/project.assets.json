@@ -6858,31 +6858,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alexandrumoldovan\\.nuget\\packages\\": {},
+    "C:\\Users\\M.Alex\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Personal\\Licenta-App\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj",
+      "projectUniqueName": "E:\\FACULTATE\\An3-Sem2\\Licenta\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj",
       "projectName": "TeacherKit.Domain",
-      "projectPath": "D:\\Personal\\Licenta-App\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj",
-      "packagesPath": "C:\\Users\\alexandrumoldovan\\.nuget\\packages\\",
-      "outputPath": "D:\\Personal\\Licenta-App\\TeacherKit\\TeacherKit.Domain\\obj\\",
+      "projectPath": "E:\\FACULTATE\\An3-Sem2\\Licenta\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\TeacherKit.Domain.csproj",
+      "packagesPath": "C:\\Users\\M.Alex\\.nuget\\packages\\",
+      "outputPath": "E:\\FACULTATE\\An3-Sem2\\Licenta\\Licenta-App\\TeacherKitFromGit\\TeacherKit\\TeacherKit.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\alexandrumoldovan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\M.Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {},
-        "https://pkgs.dev.azure.com/sdl/_packaging/SDLNuget/nuget/v3/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {

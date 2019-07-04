@@ -116,9 +116,7 @@ export class ClassView extends React.Component<Props, State> {
     });
   }
 
-  private handleOpenImage() {
-    this.setState({ isOpenImage: true });
-  }
+  private handleOpenImage = index => this.setState({ isOpenImage: true });
 
   private handleOpenImageFromArchive(index: any) {
     this.setState({ isOpenImageFromArchive: true, photoIndex: index });

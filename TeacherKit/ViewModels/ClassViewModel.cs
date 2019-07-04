@@ -19,6 +19,7 @@ namespace TeacherKit.ViewModels
         public List<ClassViewMediaModel> ClassesMediaModel{ get; set; }
         public List<StudentViewModel> Students{ get; set; }
         public ClassViewMediaModel ClassIconModel { get; set; }
+        public int UserId { get; set; }
     }
 
     public class ClassesCommandViewModel : ClassViewModel

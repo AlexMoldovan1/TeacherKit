@@ -93,6 +93,17 @@ export class StudentListItem extends React.Component<Props, State> {
     this.props.handleChangeClass(parseInt(e.target.value));
   }
 
+  private getClassNameById(classId: number): string {
+    let nameClass = "";
+    this.props.classes.map(classModel => {
+      if (classModel.id == classId) {
+        nameClass = classModel.title;
+        return;
+      }
+    });
+    return nameClass;
+  }
+
   render() {
     return (
       this.handleRedirect() || (
@@ -107,7 +118,11 @@ export class StudentListItem extends React.Component<Props, State> {
             className="summary_field"
             onClick={() => this.handleClick(this.props.student)}
           >
+            <span className="color-from-buttons">Name: </span>
             {this.props.student.lastName + " " + this.props.student.firstName}
+            <br />
+            <span className="color-from-buttons">Class title: </span>
+            {this.getClassNameById(this.props.student.classModelId)}
           </div>
           <div className="student-all-button student-button-add-to-class">
             <Tooltip content="Add to class" position="bottom">
@@ -125,7 +140,7 @@ export class StudentListItem extends React.Component<Props, State> {
             >
               <div className="buttons-side">
                 <div className="bp3-dialog-body choiceClassForStudent">
-                  <span className="addStarColor">
+                  <span className="color-from-buttons">
                     {this.props.student.lastName +
                       " " +
                       this.props.student.firstName +
@@ -190,7 +205,7 @@ export class StudentListItem extends React.Component<Props, State> {
               >
                 <div className="buttons-side">
                   <div className="bp3-dialog-body">
-                    <span className="addStarColor">
+                    <span className="color-from-buttons">
                       {this.props.student.lastName +
                         " " +
                         this.props.student.firstName}
@@ -232,7 +247,7 @@ export class StudentListItem extends React.Component<Props, State> {
               >
                 <div className="buttons-side">
                   <div className="bp3-dialog-body">
-                    <span className="addStarColor">
+                    <span className="color-from-buttons">
                       {this.props.student.lastName +
                         " " +
                         this.props.student.firstName}

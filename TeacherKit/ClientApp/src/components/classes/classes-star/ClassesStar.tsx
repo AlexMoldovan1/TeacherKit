@@ -13,10 +13,12 @@ import "../../../shared/shared-css/list-all.css";
 import { ClassesTabs } from "../../../view-models/classes-tabs";
 import { ClassListView } from "../shared-components/class-list-view/ClassListView";
 import { ClassListFilters } from "../shared-components/classes-list-filters/ClassListFilters";
+import { UserStore } from "src/store/user-store";
 
 interface Props {
   classesStore: ClassesStore;
   viewStore: ViewStore;
+  userStore: UserStore;
   handleStudentDetails: Function;
 }
 
@@ -36,12 +38,19 @@ const initialState: State = {
 
 @inject("classesStore")
 @inject("viewStore")
+@inject("userStore")
 @observer
 export class ClassesStar extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = initialState;
-    this.props.classesStore.loadClasses(() =>
+    const userIdFromStorage = localStorage.getItem("userId");
+    let userIdInt = 0;
+    if (userIdFromStorage != null) {
+      userIdInt = parseInt(userIdFromStorage);
+    }
+
+    this.props.classesStore.loadClasses(userIdInt, () =>
       this.setState({
         classes: this.props.classesStore.classes,
         dataWasReceived: true

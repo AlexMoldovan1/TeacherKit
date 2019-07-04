@@ -38,6 +38,10 @@ export class Login extends React.Component<Props, State> {
       localStorage.setItem("logged", this.props.userStore.user.tokenGuid);
     }
     localStorage.setItem("user", JSON.stringify(this.props.userStore.user));
+    localStorage.setItem(
+      "userId",
+      JSON.stringify(this.props.userStore.user.id)
+    );
     window.location.href = "/";
   }
 

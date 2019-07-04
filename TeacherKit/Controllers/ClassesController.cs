@@ -16,10 +16,10 @@ namespace TeacherKit.Controllers
             _classesService = classesService;
         }
 
-        [HttpGet("[action]")]
-        public object All()
+        [Route("All/{id}")]
+        public object All(int id)
         {
-            return _classesService.GetAll();
+            return _classesService.GetAll(id);
         }
 
         [Route("AddClass")]

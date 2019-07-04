@@ -23,6 +23,7 @@ import { ClassDetails } from "./details/ClassDetails";
 import { ClassesNotes } from "./notes/ClassesNotes";
 import { ClassMedia } from "./media/ClassMedia";
 import { CourseDates } from "./date-picker/CourseDates";
+import { UserStore } from "src/store/user-store";
 
 interface Match {
   params: {
@@ -34,6 +35,7 @@ interface Props {
   classesStore: ClassesStore;
   viewStore: ViewStore;
   studentsStore: StudentsStore;
+  userStore: UserStore;
   match: Match;
   location: Location;
 }
@@ -51,6 +53,7 @@ interface State {
     stars: boolean;
     students: StudentViewModel[];
     classesMediaModel: ClassMediaViewModel[];
+    userId: number;
   };
   saveModalIsOpen: boolean;
   classMediaImages: ClassMediaViewModel[];
@@ -69,7 +72,8 @@ const activeClass: ClassViewModel = {
   classIconModel: { imageName: "" },
   stars: false,
   classesMediaModel: [],
-  students: []
+  students: [],
+  userId: 0
 };
 
 const initialState: State = {
@@ -83,6 +87,7 @@ const initialState: State = {
 @inject("classesStore")
 @inject("viewStore")
 @inject("studentsStore")
+@inject("userStore")
 @observer
 export class ClassForm extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -222,6 +227,10 @@ export class ClassForm extends React.Component<Props, State> {
   private handleSavedBtnPressed(): void {
     let detailsError = false;
     let courseDetailsError = false;
+    const userId = localStorage.getItem("userId");
+    if (userId != null) {
+      this.state.activeClass.userId = parseInt(userId);
+    }
 
     if (
       this.state.activeClass.title === "" ||

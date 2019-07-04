@@ -101,9 +101,9 @@ namespace TeacherKit.Services
             _studentsRepository.Delete(student);
         }
 
-        public List<StudentQueryViewModel> GetAll()
+        public List<StudentQueryViewModel> GetAll(int userId)
         {
-            return _mapper.Map<List<StudentQueryViewModel>>(_studentsRepository.GetAll());
+            return _mapper.Map<List<StudentQueryViewModel>>(_studentsRepository.GetAll(userId));
         }
 
         public StudentQueryViewModel GetById(int studentId)

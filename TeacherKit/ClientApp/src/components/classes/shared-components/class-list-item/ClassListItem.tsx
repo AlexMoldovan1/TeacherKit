@@ -105,7 +105,7 @@ export class ClassListItem extends React.Component<Props, State> {
               >
                 <div className="buttons-side">
                   <div className="bp3-dialog-body">
-                    <span className="addStarColor">
+                    <span className="color-from-buttons">
                       {this.props.class.title}
                     </span>{" "}
                     has been removed from star classes!
@@ -145,7 +145,7 @@ export class ClassListItem extends React.Component<Props, State> {
               >
                 <div className="buttons-side">
                   <div className="bp3-dialog-body">
-                    <span className="addStarColor">
+                    <span className="color-from-buttons">
                       {this.props.class.title}
                     </span>{" "}
                     has been added to star classes!

@@ -15,11 +15,13 @@ import { StudentListFilters } from "../shared-components/student-list-filters/St
 import { ClassQueryViewModel, ClassViewModel } from "src/view-models/class";
 import { ClassesStore } from "src/store/class-store";
 import { number } from "prop-types";
+import { UserStore } from "src/store/user-store";
 
 interface Props {
   studentsStore: StudentsStore;
   classesStore: ClassesStore;
   viewStore: ViewStore;
+  userStore: UserStore;
   handleStudentDetails: Function;
 }
 
@@ -53,25 +55,33 @@ const initialState: State = {
     notes: [],
     classesMediaModel: [],
     classIconModel: { imageName: "" },
-    students: []
+    students: [],
+    userId: 0
   }
 };
 
 @inject("studentsStore")
 @inject("classesStore")
 @inject("viewStore")
+@inject("userStore")
 @observer
 export class StudentsList extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = initialState;
+    const userIdFromStorage = localStorage.getItem("userId");
+    let userIdInt = 0;
+    if (userIdFromStorage != null) {
+      userIdInt = parseInt(userIdFromStorage);
+    }
     this.props.studentsStore.loadStudents(
+      userIdInt,
       () =>
         this.setState({
           students: this.props.studentsStore.students,
           dataWasReceived: true
         }),
-      () => this.props.classesStore.loadClasses()
+      () => this.props.classesStore.loadClasses(userIdInt)
     );
   }
   newListOfStudents: StudentViewModel[] = [];

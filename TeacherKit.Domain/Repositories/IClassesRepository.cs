@@ -5,7 +5,7 @@ namespace TeacherKit.Domain.Repositories
 {
     public interface IClassesRepository
     {
-        List<ClassModel> GetAll();
+        List<ClassModel> GetAll(int userId);
         ClassModel GetClassById(int id);
         void AddClass(ClassModel classModel);
         void AddOrUpdateClass(ClassModel classModel);

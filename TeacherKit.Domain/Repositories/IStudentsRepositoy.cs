@@ -6,7 +6,7 @@ namespace TeacherKit.Domain.Repositories
 {
     public interface IStudentsRepositoy
     {
-        List<StudentModel> GetAll();
+        List<StudentModel> GetAll(int userId);
         List<StudentModel> GetStudentsByClassId(int classId);
         StudentModel GetStudentById(int id);
         List<StudentModel> GetByName(string keyword);

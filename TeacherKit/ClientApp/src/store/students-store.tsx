@@ -32,6 +32,7 @@ export class StudentsStore {
       adress: "",
       star: false,
       classModelId: 0,
+      userId: 0,
       parentInfo: {
         id: 0,
         firstName: "",
@@ -48,9 +49,9 @@ export class StudentsStore {
   }
 
   @action
-  loadStudents(callback?: Function, callback2?: Function) {
+  loadStudents(userId: number, callback?: Function, callback2?: Function) {
     this.studentApi
-      .getStudents()
+      .getStudents(userId)
       .then(
         data =>
           (this.students = data.map(

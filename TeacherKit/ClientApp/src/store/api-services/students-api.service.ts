@@ -1,5 +1,6 @@
 import { StudentQueryViewModel } from "../../view-models/student";
 import AxiosInstance from "axios";
+import { O_DSYNC } from "constants";
 
 const DELETE_HEADERS = {
   method: "DELETE",
@@ -9,8 +10,8 @@ const DELETE_HEADERS = {
 };
 
 export class StudentsApiService {
-  async getStudents(): Promise<StudentQueryViewModel[]> {
-    const url = "/api/Students/All";
+  async getStudents(userId: number): Promise<StudentQueryViewModel[]> {
+    const url = "/api/Students/All/" + userId;
     const response = await fetch(url);
     const data = await response.json();
     return data;

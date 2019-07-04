@@ -8,7 +8,7 @@ namespace TeacherKit.Services
 {
     public interface IStudentsService
     {
-        List<StudentQueryViewModel> GetAll();
+        List<StudentQueryViewModel> GetAll(int userId);
         StudentQueryViewModel GetById(int id);
         void AddStudent(StudentCommandViewModel student);
         void UpdateStudent(StudentViewModel student);

@@ -19,6 +19,7 @@ import { StudentDeleteModal } from "./StudentDeleteModal";
 import StudentSaveModel from "./StudentSaveModal";
 import { StudentDetails } from "./personal-info/StudentDetails";
 import { ParentDetails } from "./parent-info/ParentDetails";
+import { UserStore } from "src/store/user-store";
 
 interface Match {
   params: {
@@ -29,6 +30,7 @@ interface Match {
 interface Props {
   studentsStore: StudentsStore;
   viewStore: ViewStore;
+  userStore: UserStore;
   match: Match;
 }
 
@@ -47,6 +49,7 @@ interface State {
     gender: string;
     star: boolean;
     classModelId: number;
+    userId: number;
     parentInfo: {
       id: number;
       firstName: string;
@@ -77,6 +80,7 @@ const activeStudent: StudentViewModel = {
   adress: "",
   gender: "male",
   star: false,
+  userId: 0,
   parentInfo: {
     id: 0,
     firstName: "",
@@ -99,6 +103,7 @@ const initialState: State = {
 
 @inject("studentsStore")
 @inject("viewStore")
+@inject("userStore")
 @observer
 export class StudentForm extends React.Component<Props, State> {
   private saveInput: any;
@@ -336,7 +341,10 @@ export class StudentForm extends React.Component<Props, State> {
   private handleSavedBtnPressed(): void {
     this.savePressed = true;
     let detailsError = false;
-
+    const userId = localStorage.getItem("userId");
+    if (userId != null) {
+      this.state.activeStudent.userId = parseInt(userId);
+    }
     if (
       this.state.activeStudent.firstName === "" ||
       this.state.activeStudent.lastName === "" ||

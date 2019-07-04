@@ -32,6 +32,8 @@ export class StudentViewModel {
   public studentsMediaFiles: StudentsMediaViewModel[];
   @observable
   public classModelId: number;
+  @observable
+  public userId: number;
   constructor(student: any) {
     this.id = student.id;
     this.firstName = student.firstName;
@@ -47,6 +49,7 @@ export class StudentViewModel {
     this.studentsMediaFiles = student.studentsMediaFiles;
     this.star = student.star;
     this.classModelId = student.classModelId;
+    this.userId = student.userId;
   }
 }
 

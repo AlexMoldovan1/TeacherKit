@@ -5,7 +5,7 @@ namespace TeacherKit.Services
 {
     public interface IClassesService
     {
-        List<ClassesQueryViewModel> GetAll();
+        List<ClassesQueryViewModel> GetAll(int userId);
         void AddOrUpdateClass(ClassesCommandViewModel classCommandModel);
         //void AddStudentToClass(ClassesCommandViewModel classCommandModel);
         ClassesQueryViewModel GetClassById(int id);

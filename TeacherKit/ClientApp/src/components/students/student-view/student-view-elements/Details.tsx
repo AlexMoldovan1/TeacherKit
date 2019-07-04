@@ -5,6 +5,7 @@ import { StudentQueryViewModel } from "../../../../view-models/student";
 
 interface Props {
   activeStudent: StudentQueryViewModel;
+  className: string;
 }
 
 export class Details extends React.Component<Props> {
@@ -86,6 +87,19 @@ export class Details extends React.Component<Props> {
               <div className="column">
                 <span>Adress: </span>
                 {this.props.activeStudent.parentInfo.adress}
+              </div>
+            </div>
+            <div className="row second-section">
+              <div className="column">
+                <span className="section-title">Class title</span>
+              </div>
+            </div>
+            <div className="section-content">
+              <div className="row">
+                <div className="column">
+                  <span>Title: </span>
+                  {this.props.className}
+                </div>
               </div>
             </div>
           </div>

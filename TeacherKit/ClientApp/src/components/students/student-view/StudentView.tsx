@@ -23,6 +23,7 @@ import { ClassQueryViewModel } from "src/view-models/class";
 import { ClassesStore } from "src/store/class-store";
 import { ViewStore } from "src/store/view-store";
 import { HeaderTabs } from "src/view-models/header-tabs";
+import { UserStore } from "src/store/user-store";
 
 interface Match {
   params: {
@@ -34,6 +35,7 @@ interface Props {
   studentsStore: StudentsStore;
   classesStore: ClassesStore;
   viewStore: ViewStore;
+  userStore: UserStore;
   match: Match;
   handleAddToClass: Function;
   handleChangeClass: Function;
@@ -71,6 +73,7 @@ const initialState: State = {
     adress: "",
     star: false,
     classModelId: 0,
+    userId: 0,
     parentInfo: {
       id: 0,
       firstName: "",
@@ -92,6 +95,7 @@ const initialState: State = {
 @inject("studentsStore")
 @inject("classesStore")
 @inject("viewStore")
+@inject("userStore")
 @observer
 export class StudentView extends React.Component<Props, State> {
   private images;
@@ -173,13 +177,30 @@ export class StudentView extends React.Component<Props, State> {
   };
 
   getClasses(): ClassQueryViewModel[] {
-    this.props.classesStore.loadClasses(() => {
+    const userIdFromStorage = localStorage.getItem("userId");
+    let userIdInt = 0;
+    if (userIdFromStorage != null) {
+      userIdInt = parseInt(userIdFromStorage);
+    }
+
+    this.props.classesStore.loadClasses(userIdInt, () => {
       this.setState({
         ...this.state,
         classes: this.props.classesStore.getClasses
       });
     });
     return this.props.classesStore.getClasses;
+  }
+
+  private getClassNameById(classId: number): string {
+    let nameClass = "";
+    this.state.classes.map(classModel => {
+      if (classModel.id == classId) {
+        nameClass = classModel.title;
+        return;
+      }
+    });
+    return nameClass;
   }
 
   private handleRedirect(): React.ReactNode {
@@ -387,7 +408,7 @@ export class StudentView extends React.Component<Props, State> {
                 >
                   <div className="buttons-side">
                     <div className="bp3-dialog-body choiceClassForStudent">
-                      <span className="addStarColor">
+                      <span className="color-from-buttons">
                         {this.state.activeStudent.lastName +
                           " " +
                           this.state.activeStudent.firstName +
@@ -465,7 +486,13 @@ export class StudentView extends React.Component<Props, State> {
 
           <div className="row">
             {this.showImages()}
-            <Details activeStudent={this.state.activeStudent} />
+
+            <Details
+              activeStudent={this.state.activeStudent}
+              className={this.getClassNameById(
+                this.state.activeStudent.classModelId
+              )}
+            />
             {this.showNotes()}
           </div>
         </div>

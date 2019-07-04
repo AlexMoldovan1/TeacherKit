@@ -20,9 +20,9 @@ namespace TeacherKit.Services
             _mapper = mapper;
         }
 
-        public List<ClassesQueryViewModel> GetAll()
+        public List<ClassesQueryViewModel> GetAll(int userId)
         {
-            return _mapper.Map<List<ClassesQueryViewModel>>(_classesRepository.GetAll());
+            return _mapper.Map<List<ClassesQueryViewModel>>(_classesRepository.GetAll(userId));
         }
 
         //public void AddStudentToClass(ClassesCommandViewModel classCommandModel)

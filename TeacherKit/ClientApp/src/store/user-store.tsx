@@ -9,6 +9,8 @@ export class UserStore {
   @observable
   user: UserViewModel;
   @observable
+  userId: number;
+  @observable
   logged: boolean;
   @observable
   statusCode: number;
@@ -39,6 +41,14 @@ export class UserStore {
     const userAsString = localStorage.getItem("user");
     if (userAsString != null) {
       this.user = JSON.parse(userAsString);
+    }
+  }
+
+  @action
+  public loadUserIdFromLocalStorage() {
+    const userAsString = localStorage.getItem("userId");
+    if (userAsString != null) {
+      this.userId = JSON.parse(userAsString);
     }
   }
 

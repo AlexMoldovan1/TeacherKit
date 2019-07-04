@@ -8,8 +8,6 @@ namespace TeacherKit.Services
 {
     public interface IFilteredListService
     {
-        List<FilteredListViewModel> GetAll(string keyword);
-        List<FilteredListViewModel> GetFilteredStudents(string keyword);
-        List<FilteredListViewModel> GetFilteredClasses(string keyword);
+        List<FilteredListViewModel> GetAll(string keyword, int userId);
     }
 }

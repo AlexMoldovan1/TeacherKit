@@ -12,11 +12,13 @@ import { StudentListFilters } from "../shared-components/student-list-filters/St
 import "../../../shared/shared-css/list-all.css";
 import { ClassQueryViewModel } from "src/view-models/class";
 import { ClassesStore } from "src/store/class-store";
+import { UserStore } from "src/store/user-store";
 
 interface Props {
   studentsStore: StudentsStore;
   viewStore: ViewStore;
   classesStore: ClassesStore;
+  userStore: UserStore;
 }
 
 interface State {
@@ -38,12 +40,20 @@ const initialState: State = {
 @inject("classesStore")
 @inject("studentsStore")
 @inject("viewStore")
+@inject("userStore")
 @observer
 export class StudentsStars extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = initialState;
-    this.props.studentsStore.loadStudents(() =>
+
+    const userIdFromStorage = localStorage.getItem("userId");
+    let userIdInt = 0;
+    if (userIdFromStorage != null) {
+      userIdInt = parseInt(userIdFromStorage);
+    }
+
+    this.props.studentsStore.loadStudents(userIdInt, () =>
       this.setState({
         dataWasReceived: true
       })

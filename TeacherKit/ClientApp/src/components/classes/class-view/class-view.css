@@ -22,11 +22,11 @@
   margin: 30px;
 }
 
-@media screen and (min-width: 800px) {
+/* @media screen and (min-width: 800px) {
   .rowIcon > .column {
     padding: 10px !important;
   }
-}
+} */
 
 .icon-container > .column {
   flex-basis: 100% !important;
@@ -63,6 +63,13 @@
   float: none;
   width: 100%;
   align-self: center;
+}
+
+.media-from-archive {
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+  padding: "15px";
 }
 
 .icon-image img {

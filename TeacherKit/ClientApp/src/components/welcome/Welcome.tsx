@@ -48,6 +48,7 @@ class Welcome extends React.Component<Props, State> {
     this.props.userStore.logOut(currentUser);
     this.props.updateState();
     localStorage.setItem("user", JSON.stringify(""));
+    localStorage.setItem("userId", JSON.stringify(""));
     window.location.href = "/user/login";
   }
 

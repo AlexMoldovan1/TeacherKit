@@ -16,5 +16,6 @@ namespace TeacherKit.Domain.Models
         public List<ClassMediaModel> ClassesMediaFiles { get; set; }
         public ClassMediaIcon ClassMediaIcon { get; set; }
         public List<StudentModel> Students { get; set; }
+        public int UserId { get; set; }
     }
 }

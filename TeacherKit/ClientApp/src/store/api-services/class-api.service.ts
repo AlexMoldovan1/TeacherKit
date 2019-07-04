@@ -10,8 +10,8 @@ const HEADERS = {
 };
 
 export class ClassesApiService {
-  async getClasses(): Promise<ClassQueryViewModel[]> {
-    const url = "/api/Classes/All";
+  async getClasses(userId: number): Promise<ClassQueryViewModel[]> {
+    const url = "/api/Classes/All/" + userId;
     const response = await fetch(url);
     const data = await response.json();
     return data;
@@ -19,13 +19,6 @@ export class ClassesApiService {
 
   async getClassById(classId: number): Promise<ClassQueryViewModel> {
     const url = "/api/Classes/GetClassById/" + classId;
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  }
-
-  async getStudentsByClassId(classId: number): Promise<StudentViewModel[]> {
-    const url = "/api/Classes/getStudentsByClassId/" + classId;
     const response = await fetch(url);
     const data = await response.json();
     return data;

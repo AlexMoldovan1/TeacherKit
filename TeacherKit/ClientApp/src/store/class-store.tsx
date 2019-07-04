@@ -30,14 +30,15 @@ export class ClassesStore {
       classIconQueryModel: { imageName: "" },
       classMediaQueryModel: [],
       iconName: "",
-      students: []
+      students: [],
+      userId: 0
     };
   }
 
   @action
-  loadClasses(callback?: Function) {
+  loadClasses(userId: number, callback?: Function) {
     this.classesApi
-      .getClasses()
+      .getClasses(userId)
       .then(data => {
         this.classes = data.map(
           classModel => new ClassQueryViewModel(classModel)

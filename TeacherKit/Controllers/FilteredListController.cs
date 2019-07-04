@@ -19,9 +19,9 @@ namespace TeacherKit.Controllers
         }
 
         [Route("GetAllByKeyword/{keyword}")]
-        public IEnumerable<FilteredListViewModel> GetAllByKeyword(string keyword)
+        public IEnumerable<FilteredListViewModel> GetAllByKeyword(string keyword, int userId)
         {
-            return _filteredListService.GetAll(keyword);
+            return _filteredListService.GetAll(keyword, userId);
         }
     }
 }

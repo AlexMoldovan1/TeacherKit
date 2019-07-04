@@ -20,5 +20,6 @@ namespace TeacherKit.Domain
         public virtual List<StudentMediaModel> StudentsMedia { get; set; }
         public List<NoteModel> Notes { get; set; }
         public int ClassModelId{ get; set; }
+        public int UserId{ get; set; }
     }
 }

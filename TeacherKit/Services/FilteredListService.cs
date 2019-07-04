@@ -22,26 +22,26 @@ namespace TeacherKit.Services
             _mapper = mapper;   
         }
 
-        public List<FilteredListViewModel> GetAll(string keyword)
+        public List<FilteredListViewModel> GetAll(string keyword, int userId)
         {
-            return GetFilteredStudents(keyword);//.Union(GetFilteredClasses(keyword)).ToList();
+            return GetFilteredStudents(keyword, userId);//.Union(GetFilteredClasses(keyword)).ToList();
 
         }
 
-        public List<FilteredListViewModel> GetFilteredStudents(string keyword)
+        public List<FilteredListViewModel> GetFilteredStudents(string keyword, int userId)
         {
             var studentsList = keyword != null ?
                 _studentsRepository.GetByName(keyword)
-                : _studentsRepository.GetAll();
+                : _studentsRepository.GetAll(userId);
 
             return ConvertListMediaInMedia(_mapper.Map<List<FilteredListViewModel>>(studentsList), studentsList);
         }
 
-        public List<FilteredListViewModel> GetFilteredClasses(string keyword)
+        public List<FilteredListViewModel> GetFilteredClasses(string keyword, int userId)
         {
             var classesList = keyword != null ?
                 _classRepository.GetClassByTitle(keyword)
-                : _classRepository.GetAll();
+                : _classRepository.GetAll(userId);
 
             return _mapper.Map<List<FilteredListViewModel>>(classesList);
         }

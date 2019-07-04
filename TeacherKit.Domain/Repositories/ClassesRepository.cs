@@ -16,9 +16,9 @@ namespace TeacherKit.Domain.Repositories
             _db = db;
         }
 
-        public List<ClassModel> GetAll()
+        public List<ClassModel> GetAll(int userId)
         {
-            return _db.Classes
+            return _db.Classes.Where(x => x.UserId == userId)
                 .Include(cl => cl.ClassesMediaFiles)
                 .Include(cl => cl.Groups)
                 .Include(cl => cl.Notes)
